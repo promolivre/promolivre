@@ -10,7 +10,7 @@ function updateCarousel() {
 }
 
 nextButton.addEventListener('click', () => {
-  if (currentIndex < items.length - 3) currentIndex++;
+  if (currentIndex < items.length - getVisibleCount()) currentIndex++;
   updateCarousel();
 });
 
@@ -18,6 +18,10 @@ prevButton.addEventListener('click', () => {
   if (currentIndex > 0) currentIndex--;
   updateCarousel();
 });
+
+function getVisibleCount() {
+  return window.innerWidth <= 768 ? 1 : 3;
+}
 
 window.addEventListener('resize', updateCarousel);
 window.addEventListener('load', updateCarousel);
