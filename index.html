@@ -7,10 +7,11 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
+  
 <body>
-  <header>
+<header>
     <div class="container">
-      <h1 class="logo">Minha Loja</h1>
+      <h1 class="logo">PromoLivre</h1>
       <nav>
         <ul>
           <li><a href="#" onclick="mostrarCategoria('celulares')">Celulares</a></li>
@@ -22,6 +23,54 @@
       </nav>
     </div>
   </header>
+  
+<section class="carousel-section">
+    <h2>Produtos em Destaque</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">&#10094;</button>
+      <div class="carousel-track-container">
+        <ul class="carousel-track">
+          <li class="carousel-item">
+            <img src="acerrnitro.jpg" alt="Produto 1">
+            <h3>Produto 1</h3>
+            <p>R$ 199,99</p>
+          </li>
+          <li class="carousel-item">
+            <img src="S25ultra.jpg" alt="Produto 2">
+            <h3>Produto 2</h3>
+            <p>R$ 349,90</p>
+          </li>
+          <li class="carousel-item">
+            <img src="Iphone 15ProMax.jpg" alt="Produto 3">
+            <h3>Produto 3</h3>
+            <p>R$ 89,00</p>
+          </li>
+          <li class="carousel-item">
+            <img src="batedeira.jpg" alt="Produto 4">
+            <h3>Produto 4</h3>
+            <p>R$ 499,90</p>
+          </li>
+        </ul>
+      </div>
+      <button class="carousel-btn next">&#10095;</button>
+    </div>
+  </section>
+  
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const track = document.querySelector(".carousel-track");
+      const items = Array.from(track.children);
+      let index = 0;
+
+      function mostrarProximo() {
+        index++;
+        if (index >= items.length) index = 0;
+        track.style.transform = `translateX(-${index * 100}%)`;
+      }
+
+      setInterval(mostrarProximo, 3000);
+    });
+  </script>
 
   <section class="hero">
     <div class="container">
@@ -100,7 +149,24 @@
       </div>
     </div>
   </section>
+  
+<!-- SOBRE -->
+<section id="sobre" class="sobre">
+  <div class="container">
+    <h2>Sobre a Loja</h2>
+    <p>Somos uma loja afiliada que busca sempre oferecer os melhores produtos e promoções do Mercado Livre com curadoria personalizada para você.</p>
+  </div>
+</section>
 
+<!-- CONTATO -->
+<section id="contato" class="contato">
+  <div class="container">
+    <h2>Fale Conosco</h2>
+    <p>Email: contato@sualoja.com.br</p>
+    <p>WhatsApp: (11) 99999-9999</p>
+  </div>
+</section>
+  
   <footer>
     <div class="container">
       <p>&copy; 2025 - Minha Loja Virtual. Todos os direitos reservados.</p>
@@ -119,6 +185,7 @@
     window.onload = () => {
       mostrarCategoria('celulares');
     };
-  </script>
+    
+</script>
 </body>
 </html>
