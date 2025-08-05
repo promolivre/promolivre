@@ -36,12 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Carrossel automático
   setInterval(scrollNext, 5000);
 
-  // Mostrar categoria padrão
-  window.mostrarCategoria = function(categoria) {
-    const secoes = document.querySelectorAll('.categoria-section');
-    secoes.forEach(secao => secao.style.display = 'none');
-    const ativa = document.getElementById(categoria);
-    if (ativa) ativa.style.display = 'block';
-  };
-  mostrarCategoria('celulares');
-});
+ function mostrarCategoria(categoria) {
+  const secoes = document.querySelectorAll('.categoria-section');
+  secoes.forEach(secao => secao.style.display = 'none');
+
+  const ativa = document.getElementById(categoria);
+  if (ativa) {
+    ativa.style.display = 'block';
+    ativa.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// Torna a função acessível globalmente (ao HTML)
+window.mostrarCategoria = mostrarCategoria;
