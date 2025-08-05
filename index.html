@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ofertas Exclusivas - Mercado Livre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #3483fa;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #2968c8;
+    }
+
+    header {
+      background-color: #ffe600;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      background: #fafafa;
+    }
+
+    .card-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      text-align: center;
+      background-color: #3483fa;
+      color: #fff;
+      padding: 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #2968c8;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+      padding: 30px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegação -->
+  <nav>
+    <a href="#tecnologia">Tecnologia</a>
+    <!-- você pode adicionar outras categorias aqui -->
+  </nav>
+
+  <!-- Cabeçalho -->
+  <header>
+    <h1>Ofertas Exclusivas no Mercado Livre</h1>
+    <p>Confira os melhores produtos com descontos imperdíveis!</p>
+  </header>
+
+  <!-- Categoria Tecnologia -->
+  <div class="container">
+    <h2 id="tecnologia" style="margin-bottom: 20px; font-size: 1.6rem; font-weight: 600;">Categoria: Tecnologia</h2>
+    <div class="grid">
+      
+      <!-- Produto 1 -->
+      <div class="card">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_12345-MLB0000000000.jpg" alt="Produto 1" />
+        <div class="card-content">
+          <h3>Produto Exemplo 1</h3>
+          <a href="https://www.mercadolivre.com.br/SEU-LINK-AFILIADO-1" class="btn" target="_blank">Ver Oferta</a>
+        </div>
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="card">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_54321-MLB0000000000.jpg" alt="Produto 2" />
+        <div class="card-content">
+          <h3>Produto Exemplo 2</h3>
+          <a href="https://www.mercadolivre.com.br/SEU-LINK-AFILIADO-2" class="btn" target="_blank">Ver Oferta</a>
+        </div>
+      </div>
+
+      <!-- Produto 3 -->
+      <div class="card">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_98765-MLB0000000000.jpg" alt="Produto 3" />
+        <div class="card-content">
+          <h3>Produto Exemplo 3</h3>
+          <a href="https://www.mercadolivre.com.br/SEU-LINK-AFILIADO-3" class="btn" target="_blank">Ver Oferta</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    &copy; 2025 - Site de Afiliado Mercado Livre. Desenvolvido com ❤️
+  </footer>
+
+</body>
+</html>
