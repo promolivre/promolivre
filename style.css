@@ -178,3 +178,47 @@ footer {
   border-left: 5px solid #3483fa;
   padding-left: 15px;
 }
+.carousel {
+  background: #fff;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.carousel h2 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2rem;
+}
+
+.carousel-track {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel-item {
+  min-width: 100%;
+  flex-shrink: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.carousel-item h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.carousel-item p {
+  font-weight: 700;
+  color: #3483fa;
+}
