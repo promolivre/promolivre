@@ -7,24 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
-  <script>
-  const track = document.querySelector('.carousel-track');
-  const items = Array.from(track.children);
-  let index = 0;
-
-  function mostrarProximo() {
-    index++;
-    if (index >= items.length) {
-      index = 0;
-    }
-    const larguraItem = items[0].getBoundingClientRect().width;
-    track.style.transform = `translateX(-${index * larguraItem}px)`;
-  }
-
-  // Muda a cada 3 segundos
-  setInterval(mostrarProximo, 3000);
-</script>
-
+  
 <body>
   <header>
     <div class="container">
@@ -179,6 +162,22 @@
     window.onload = () => {
       mostrarCategoria('celulares');
     };
-  </script>
+    
+  <script>
+  const track = document.querySelector('.carousel-track');
+  const items = Array.from(track.children);
+  let index = 0;
+
+  function mostrarProximo() {
+    index++;
+    if (index >= items.length) {
+      index = 0;
+    }
+    const larguraItem = items[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${index * larguraItem}px)`;
+  }
+
+  setInterval(mostrarProximo, 3000);
+</script>
 </body>
 </html>
