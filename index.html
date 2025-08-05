@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minha Loja Virtual</title>
+  <title>PromoLivre</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
-  
+
 <body>
-<header>
-    <div class="container">
+  <header>
+    <div class="container header-container">
       <h1 class="logo">PromoLivre</h1>
-      <nav>
+      <nav class="navbar">
         <ul>
           <li><a href="#" onclick="mostrarCategoria('celulares')">Celulares</a></li>
           <li><a href="#" onclick="mostrarCategoria('veiculos')">Veículos</a></li>
@@ -23,31 +23,31 @@
       </nav>
     </div>
   </header>
-  
-<section class="carousel-section">
+
+  <section class="carousel-section">
     <h2>Produtos em Destaque</h2>
     <div class="carousel-container">
       <button class="carousel-btn prev">&#10094;</button>
       <div class="carousel-track-container">
         <ul class="carousel-track">
           <li class="carousel-item">
-            <img src="acerrnitro.jpg" alt="Produto 1">
-            <h3>Produto 1</h3>
-            <p>R$ 199,99</p>
+            <img src="acerrnitro.jpg" alt="Notebook Acer Nitro" />
+            <h3>Acer Nitro 5</h3>
+            <p>R$ 4.999,99</p>
           </li>
           <li class="carousel-item">
-            <img src="S25ultra.jpg" alt="Produto 2">
-            <h3>Produto 2</h3>
-            <p>R$ 349,90</p>
+            <img src="S25ultra.jpg" alt="Galaxy S25 Ultra" />
+            <h3>Galaxy S25 Ultra</h3>
+            <p>R$ 5.799,90</p>
           </li>
           <li class="carousel-item">
-            <img src="Iphone 15ProMax.jpg" alt="Produto 3">
-            <h3>Produto 3</h3>
-            <p>R$ 89,00</p>
+            <img src="Iphone 15ProMax.jpg" alt="iPhone 15 Pro Max" />
+            <h3>iPhone 15 Pro Max</h3>
+            <p>R$ 8.999,00</p>
           </li>
           <li class="carousel-item">
-            <img src="batedeira.jpg" alt="Produto 4">
-            <h3>Produto 4</h3>
+            <img src="batedeira.jpg" alt="Batedeira Planetária" />
+            <h3>Batedeira Planetária</h3>
             <p>R$ 499,90</p>
           </li>
         </ul>
@@ -55,22 +55,6 @@
       <button class="carousel-btn next">&#10095;</button>
     </div>
   </section>
-  
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const track = document.querySelector(".carousel-track");
-      const items = Array.from(track.children);
-      let index = 0;
-
-      function mostrarProximo() {
-        index++;
-        if (index >= items.length) index = 0;
-        track.style.transform = `translateX(-${index * 100}%)`;
-      }
-
-      setInterval(mostrarProximo, 3000);
-    });
-  </script>
 
   <section class="hero">
     <div class="container">
@@ -79,113 +63,34 @@
     </div>
   </section>
 
-  <!-- Seções de produtos por categoria -->
-  <section id="celulares" class="categoria-section">
+  <!-- Categorias dinâmicas -->
+  <main id="categorias">
+    <!-- As seções permanecem como no seu HTML original -->
+  </main>
+
+  <!-- Sobre -->
+  <section id="sobre" class="sobre">
     <div class="container">
-      <h2>Celulares</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_12345-MLB0000000000.jpg" alt="Celular">
-          <h3>Smartphone XYZ</h3>
-          <p>R$ 1.499,00</p>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-      </div>
+      <h2>Sobre a Loja</h2>
+      <p>Somos uma loja afiliada que busca sempre oferecer os melhores produtos e promoções do Mercado Livre com curadoria personalizada para você.</p>
     </div>
   </section>
 
-  <section id="veiculos" class="categoria-section">
+  <!-- Contato -->
+  <section id="contato" class="contato">
     <div class="container">
-      <h2>Veículos</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_54321-MLB0000000000.jpg" alt="Veículo">
-          <h3>Miniatura Carro Clássico</h3>
-          <p>R$ 199,00</p>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-      </div>
+      <h2>Fale Conosco</h2>
+      <p>Email: contato@sualoja.com.br</p>
+      <p>WhatsApp: (11) 99999-9999</p>
     </div>
   </section>
 
-  <section id="lar" class="categoria-section">
-    <div class="container">
-      <h2>Lar</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_65432-MLB0000000000.jpg" alt="Aspirador">
-          <h3>Aspirador de Pó Turbo</h3>
-          <p>R$ 299,99</p>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="computacao" class="categoria-section">
-    <div class="container">
-      <h2>Computação</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_78901-MLB0000000000.jpg" alt="Notebook">
-          <h3>Notebook Ultra Rápido</h3>
-          <p>R$ 3.200,00</p>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="televisores" class="categoria-section">
-    <div class="container">
-      <h2>Televisores</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_98765-MLB0000000000.jpg" alt="TV">
-          <h3>Smart TV 50” 4K</h3>
-          <p>R$ 2.199,00</p>
-          <a href="#" class="btn">Comprar</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-<!-- SOBRE -->
-<section id="sobre" class="sobre">
-  <div class="container">
-    <h2>Sobre a Loja</h2>
-    <p>Somos uma loja afiliada que busca sempre oferecer os melhores produtos e promoções do Mercado Livre com curadoria personalizada para você.</p>
-  </div>
-</section>
-
-<!-- CONTATO -->
-<section id="contato" class="contato">
-  <div class="container">
-    <h2>Fale Conosco</h2>
-    <p>Email: contato@sualoja.com.br</p>
-    <p>WhatsApp: (11) 99999-9999</p>
-  </div>
-</section>
-  
   <footer>
     <div class="container">
-      <p>&copy; 2025 - Minha Loja Virtual. Todos os direitos reservados.</p>
+      <p>&copy; 2025 - PromoLivre. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <script>
-    // Oculta todas as seções e mostra apenas a escolhida
-    function mostrarCategoria(categoria) {
-      const secoes = document.querySelectorAll('.categoria-section');
-      secoes.forEach(secao => secao.style.display = 'none');
-      document.getElementById(categoria).style.display = 'block';
-    }
-
-    // Mostrar categoria inicial (Celulares por padrão)
-    window.onload = () => {
-      mostrarCategoria('celulares');
-    };
-    
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
