@@ -7,6 +7,95 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
+    <style>
+    /* ROLAGEM SUAVE */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* MENU FIXO */
+    .menu-categorias {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      padding: 10px 0;
+      z-index: 1000;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .menu-categorias .btn {
+      margin: 5px 10px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .menu-categorias .btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* EXEMPLO DE LAYOUT BÁSICO */
+    .categoria-section {
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 1 1 300px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin: 15px 0 10px;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .card .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .card .btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
   
 <body>
 
