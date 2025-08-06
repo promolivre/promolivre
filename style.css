@@ -1,4 +1,4 @@
-/* === RESET BÁSICO === */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -7,100 +7,108 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
   line-height: 1.6;
-  color: #222;
-  background-color: #f9f9f9;
 }
 
-/* === CONTAINERS E GRIDS === */
 .container {
+  width: 90%;
   max-width: 1200px;
-  margin: auto;
-  padding: 0 15px;
+  margin: 0 auto;
 }
 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-/* === HEADER === */
+/* Header */
 header {
-  background-color: #0057d9;
-  color: white;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   padding: 20px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
+header .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3483fa;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 10px;
+  justify-content: flex-end;
+  gap: 20px;
 }
 
-nav ul li a {
-  color: white;
+nav a {
+  text-decoration: none;
+  color: #3483fa;
   font-weight: 600;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: background 0.3s;
+  transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-  background-color: rgba(255,255,255,0.1);
+nav a:hover {
+  color: #2968c8;
 }
 
-/* === MENU CATEGORIAS === */
-.menu-categorias {
-  position: sticky;
-  top: 0;
-  background-color: white;
-  padding: 10px 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.menu-categorias .btn {
-  margin: 5px 10px;
-  padding: 10px 15px;
-  background-color: #007bff;
+/* Hero */
+.hero {
+  background: linear-gradient(to right, #3483fa, #1e56b3);
   color: white;
-  border: none;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.menu-categorias .btn:hover {
-  background-color: #0056b3;
-}
-
-/* === CARDS DE PRODUTO === */
-.card {
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 16px;
-  max-width: 320px;
+  padding: 80px 20px;
   text-align: center;
-  transition: transform 0.2s;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #ffe600;
+  color: #333;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #ffcc00;
+}
+
+/* Produtos */
+.produtos {
+  padding: 60px 0;
+  background: #fff;
+}
+
+.produtos h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
@@ -109,88 +117,89 @@ nav ul li a:hover {
 
 .card img {
   width: 100%;
-  border-radius: 10px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
 }
 
 .card h3 {
-  font-size: 18px;
-  margin: 12px 0 8px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .card p {
-  color: #444;
-  margin-bottom: 12px;
-  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 15px;
 }
 
-.card .btn {
-  background-color: #0069d9;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.card .btn:hover {
-  background-color: #0052a3;
-}
-
-/* === HERO / BANNERS === */
-.hero {
-  background: linear-gradient(to right, #0069d9, #0052a3);
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.hero h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 18px;
-}
-
-/* === CATEGORIA === */
-.categoria-section {
-  padding: 40px 20px;
-}
-
-/* === FOOTER === */
-footer {
-  background-color: #003f7f;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  margin-top: 40px;
-}
-
-/* === SOBRE & CONTATO === */
+/* Sobre e Contato */
 .sobre, .contato {
-  background-color: white;
-  padding: 40px 20px;
-  text-align: center;
+  padding: 60px 0;
 }
 
 .sobre h2, .contato h2 {
-  margin-bottom: 10px;
-  color: #0052a3;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
 }
 
-/* === CARROSSEL PRINCIPAL === */
-.carousel-section {
+.sobre p, .contato p {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #aaa;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.9rem;
+}
+.categoria-titulo {
+  font-size: 1.5rem;
+  margin: 40px 0 20px;
+  color: #333;
+  border-left: 5px solid #3483fa;
+  padding-left: 15px;
+}
+.categoria-section {
+  display: none;
+  padding: 60px 0;
+  background: #fff;
+}
+
+.categoria-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+  border-left: 5px solid #3483fa;
+  padding-left: 15px;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+       .carousel-section {
+  background: #fff;
   padding: 40px 20px;
-  background-color: #eef5ff;
+  text-align: center;
+}
+
+.carousel-section h2 {
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .carousel-container {
   position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
   overflow: hidden;
-  max-width: 100%;
 }
 
 .carousel-track-container {
@@ -199,36 +208,48 @@ footer {
 
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease-in-out;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .carousel-item {
-  min-width: 100%;
-  padding: 20px;
-  text-align: center;
+  min-width: 33.33%;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 .carousel-item img {
-  max-width: 100%;
-  border-radius: 10px;
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #eee;
+}
+
+.carousel-item h3 {
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.carousel-item p {
+  color: #3483fa;
+  font-weight: bold;
 }
 
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #007bff;
+  background: rgba(0, 0, 0, 0.4);
   color: white;
   border: none;
   font-size: 24px;
   padding: 10px;
-  border-radius: 50%;
   cursor: pointer;
-  z-index: 2;
-}
-
-.carousel-btn:hover {
-  background-color: #0056b3;
+  z-index: 1;
+  border-radius: 50%;
 }
 
 .carousel-btn.prev {
@@ -239,49 +260,67 @@ footer {
   right: 10px;
 }
 
-/* === CARROSSEL INTERNO DOS CARDS === */
-.carousel {
-  position: relative;
-  overflow-x: auto;
-  white-space: nowrap;
-  scroll-behavior: smooth;
-}
-
-.carousel-images {
-  display: flex;
-  gap: 10px;
-}
-
-.carousel img {
-  width: 100%;
-  max-width: 280px;
-  border-radius: 10px;
-}
-
-/* === MEDIA QUERIES === */
 @media (max-width: 768px) {
-  .card {
-    max-width: 100%;
-  }
-
   .carousel-item {
     min-width: 100%;
   }
 
-  nav ul {
+.carousel-btn {
+    font-size: 20px;
+    padding: 8px;
+  }
+}
+/* Mobile menu responsivo */
+@media (max-width: 768px) {
+  .navbar ul {
     flex-direction: column;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
   }
 
-  .menu-categorias {
-    flex-direction: column;
-  }
-
-  .hero h2 {
-    font-size: 24px;
-  }
-
-  .hero p {
+  .navbar a {
     font-size: 16px;
+    display: block;
+    padding: 10px 0;
   }
+
+  .logo {
+    font-size: 22px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  header .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+header nav ul {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 20px;
+  padding: 10px 0;
+  margin: 0;
+  list-style: none;
+  scrollbar-width: none; /* Firefox */
+}
+
+header nav ul::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+header nav ul li {
+  flex-shrink: 0; /* Impede os itens de encolher */
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  padding: 5px 10px;
+  display: inline-block;
 }
