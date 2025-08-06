@@ -99,9 +99,13 @@
 </body>
   
 <header>
-<div class="container">
+  <div class="container">
     <h1 class="logo">PromoLivre</h1>
-    <nav>
+    
+    <!-- Botão do menu mobile -->
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav id="menu">
       <ul>
         <li><a href="#" onclick="mostrarCategoria('celulares')">Celulares</a></li>
         <li><a href="#" onclick="mostrarCategoria('veiculos')">Veículos</a></li>
@@ -112,6 +116,7 @@
     </nav>
   </div>
 </header>
+
     
  <section class="carousel-section">
     <h2>Produtos em Destaque</h2>
