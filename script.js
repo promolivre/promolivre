@@ -40,5 +40,11 @@ function prevSlide(button) {
   const imgWidth = images.querySelector('img').clientWidth;
   images.scrollBy({ left: -imgWidth, behavior: 'smooth' });
 }
-
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('active');
+  }
 </script>
+
+
