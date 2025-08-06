@@ -41,3 +41,11 @@ function prevSlide(button) {
   images.scrollBy({ left: -imgWidth, behavior: 'smooth' });
 }
 </script>
+   function mostrarCategoria(id) {
+    const secao = document.getElementById(id);
+    if (secao) {
+      secao.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
+
