@@ -242,13 +242,14 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   color: white;
   border: none;
   font-size: 24px;
   padding: 10px;
   cursor: pointer;
   z-index: 1;
+  border-radius: 50%;
 }
 
 .carousel-btn.prev {
