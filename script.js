@@ -40,12 +40,6 @@ function prevSlide(button) {
   const imgWidth = images.querySelector('img').clientWidth;
   images.scrollBy({ left: -imgWidth, behavior: 'smooth' });
 }
-</script>
-   function mostrarCategoria(id) {
-    const secao = document.getElementById(id);
-    if (secao) {
-      secao.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+
 </script>
 
