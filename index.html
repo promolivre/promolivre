@@ -279,23 +279,5 @@
     };
     
 </script>
-  const prevBtn = document.querySelector('.carousel-btn.prev');
-  const nextBtn = document.querySelector('.carousel-btn.next');
-  const track = document.querySelector('.carousel-track');
-
-  let scrollAmount = 0;
-  const scrollStep = 270; // largura de um item + margem
-
-  nextBtn.addEventListener('click', () => {
-    scrollAmount += scrollStep;
-    track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-  });
-
-  prevBtn.addEventListener('click', () => {
-    scrollAmount -= scrollStep;
-    if (scrollAmount < 0) scrollAmount = 0;
-    track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-  });
-</script>
 </body>
 </html>
