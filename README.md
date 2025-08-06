@@ -1,2 +1,2 @@
 # PromoLivre
-Afiliado 
+PromoLivre
