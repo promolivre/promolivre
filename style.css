@@ -185,21 +185,16 @@ body {
 }
 
 .carousel-section {
-  background: #fff;
-  padding: 40px 20px;
+  padding: 2rem;
+  background: #f7f7f7;
   text-align: center;
-}
-
-.carousel-section h2 {
-  margin-bottom: 20px;
-  color: #333;
 }
 
 .carousel-container {
   position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 100%;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .carousel-track-container {
@@ -215,40 +210,32 @@ body {
 }
 
 .carousel-item {
-  min-width: 33.33%;
-  box-sizing: border-box;
-  padding: 10px;
+  min-width: 250px;
+  max-width: 250px;
+  margin: 0 10px;
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  flex-shrink: 0;
 }
 
 .carousel-item img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: contain;
+  max-width: 100%;
   border-radius: 8px;
-  background: #eee;
-}
-
-.carousel-item h3 {
-  margin: 10px 0 5px;
-  color: #333;
-}
-
-.carousel-item p {
-  color: #3483fa;
-  font-weight: bold;
 }
 
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
-  color: white;
+  background: rgba(0,0,0,0.5);
   border: none;
-  font-size: 24px;
+  color: white;
+  font-size: 2rem;
   padding: 10px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 2;
   border-radius: 50%;
 }
 
@@ -259,6 +246,7 @@ body {
 .carousel-btn.next {
   right: 10px;
 }
+
 
 @media (max-width: 768px) {
   .carousel-item {
