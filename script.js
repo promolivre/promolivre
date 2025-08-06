@@ -25,3 +25,19 @@ function getVisibleCount() {
 
 window.addEventListener('resize', updateCarousel);
 window.addEventListener('load', updateCarousel);
+
+<script>
+function nextSlide(button) {
+  const carousel = button.closest('.carousel');
+  const images = carousel.querySelector('.carousel-images');
+  const imgWidth = images.querySelector('img').clientWidth;
+  images.scrollBy({ left: imgWidth, behavior: 'smooth' });
+}
+
+function prevSlide(button) {
+  const carousel = button.closest('.carousel');
+  const images = carousel.querySelector('.carousel-images');
+  const imgWidth = images.querySelector('img').clientWidth;
+  images.scrollBy({ left: -imgWidth, behavior: 'smooth' });
+}
+</script>
