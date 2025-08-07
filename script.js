@@ -26,17 +26,4 @@ function getVisibleCount() {
 window.addEventListener('resize', updateCarousel);
 window.addEventListener('load', updateCarousel);
 
-heroTitle.style.opacity = 0;
-heroSubtitle.style.opacity = 0;
-
-setTimeout(() => {
-  heroTitle.textContent = title || defaultTitle;
-  heroSubtitle.textContent = subtitle || defaultSubtitle;
-
-  heroTitle.style.opacity = 1;
-  heroSubtitle.style.opacity = 1;
-}, 200);
-
-
 <script></script>
-
