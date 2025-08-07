@@ -6,14 +6,11 @@
   <title>Minha Loja Virtual</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-</head>
-    <style>
-    /* ROLAGEM SUAVE */
+  <style>
     html {
       scroll-behavior: smooth;
     }
 
-    /* MENU FIXO */
     .menu-categorias {
       position: sticky;
       top: 0;
@@ -39,7 +36,6 @@
       background-color: #0056b3;
     }
 
-    /* EXEMPLO DE LAYOUT BÁSICO */
     .categoria-section {
       padding: 40px 20px;
     }
@@ -94,23 +90,87 @@
     .card .btn:hover {
       background-color: #218838;
     }
+
+    /* SUBCATEGORIAS */
+    .subcategorias {
+      padding: 20px;
+      background-color: #f9f9f9;
+      text-align: center;
+      display: none;
+    }
+
+    .subcategorias h3 {
+      margin-bottom: 15px;
+    }
+
+    .subcategorias ul {
+      list-style: none;
+      padding: 0;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .subcategorias li {
+      padding: 5px 0;
+    }
   </style>
 </head>
-</body>
-  
-<header>
-  <div class="container">
+<body>
+
+  <header>
+    <div class="container">
       <h1 class="logo">PromoLivre</h1>
-    <div class="menu-categorias-scroll">
-  <a href="#" onclick="mostrarCategoria('celulares')" class="btn">Celulares</a>
-  <a href="#" onclick="mostrarCategoria('acessorios/Car')" class="btn">Acessórios/Car</a>
-  <a href="#" onclick="mostrarCategoria('lar')" class="btn">Lar</a>
-  <a href="#" onclick="mostrarCategoria('informatica')" class="btn">Informática</a>
-  <a href="#" onclick="mostrarCategoria('televisores')" class="btn">Televisores</a>
-  <!-- Adicione mais categorias aqui se quiser -->
-</div>
-  
+      <div class="menu-categorias">
+        <a href="#" onclick="mostrarCategoria('celulares')" class="btn">Celulares</a>
+        <a href="#" onclick="mostrarCategoria('acessoriosCar')" class="btn">Acessórios/Car</a>
+        <a href="#" onclick="mostrarCategoria('lar')" class="btn">Lar</a>
+        <a href="#" onclick="mostrarCategoria('informatica')" class="btn">Informática</a>
+        <a href="#" onclick="mostrarCategoria('televisores')" class="btn">Televisores</a>
+      </div>
+    </div>
   </header>
+
+  <div id="subcategorias" class="subcategorias"></div>
+
+  <script>
+    function mostrarCategoria(categoria) {
+      const categorias = {
+        celulares: {
+          titulo: "Tecnologia > Celulares",
+          itens: ["Samsung", "Apple", "Motorola", "Xiaomi"]
+        },
+        acessoriosCar: {
+          titulo: "Acessórios para Carros",
+          itens: ["Pneus", "Acessórios"]
+        },
+        lar: {
+          titulo: "Casa e Lar",
+          itens: ["Eletrodomésticos", "Móveis", "Decoração"]
+        },
+        informatica: {
+          titulo: "Informática",
+          itens: ["Computadores", "Notebooks", "Periféricos", "Fontes", "Monitores", "Placa de Vídeo"]
+        },
+        televisores: {
+          titulo: "Televisores",
+          itens: ["Smart TVs", "LED", "4K", "Suportes"]
+        }
+      };
+
+      const subcategoriasDiv = document.getElementById("subcategorias");
+      const dados = categorias[categoria];
+
+      if (dados) {
+        let html = `<h3>${dados.titulo}</h3><ul>`;
+        dados.itens.forEach(item => {
+          html += `<li>${item}</li>`;
+        });
+        html += "</ul>";
+        subcategoriasDiv.innerHTML = html;
+        subcategoriasDiv.style.display = "block";
+      }
+    }
+  </script>
   
 <section class="carousel-section">
     <h2>Produtos em Destaque</h2>
