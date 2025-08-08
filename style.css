@@ -399,4 +399,23 @@ header nav ul li a {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+.botao-voltar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.botao-voltar:hover {
+  background-color: #0056b3;
+}
 
