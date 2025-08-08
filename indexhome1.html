@@ -716,12 +716,20 @@
     };
     
 </script>
-          function buscarProduto() {
-  let termo = document.getElementById("campoPesquisa").value;
-  if (termo.trim() !== "") {
-    // Pesquisa no Google
-    window.open(`https://www.google.com/search?q=${encodeURIComponent(termo)}`, "_blank");
-  }
+        function buscarProduto() {
+  let termo = document.getElementById("campoPesquisa").value.toLowerCase();
+  let produtos = document.querySelectorAll(".card");
+
+  produtos.forEach(produto => {
+    let titulo = produto.querySelector("h3").textContent.toLowerCase();
+    let preco = produto.querySelector("p").textContent.toLowerCase();
+
+    if (titulo.includes(termo) || preco.includes(termo)) {
+      produto.style.display = "block"; // mostra
+    } else {
+      produto.style.display = "none"; // esconde
+    }
+  });
 }
 </script>
 </body>
