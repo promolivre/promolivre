@@ -381,7 +381,7 @@ header nav ul li a {
   transition: background 0.3s;
 }
 
-.botao-voltar:hover {
+.botao-anterior:hover {
   background-color: #0056b3;
 }
 
