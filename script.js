@@ -26,4 +26,12 @@ function getVisibleCount() {
 window.addEventListener('resize', updateCarousel);
 window.addEventListener('load', updateCarousel);
 
-<script></script>
+<script>
+     function buscarProduto() {
+  let termo = document.getElementById("campoPesquisa").value;
+  if (termo.trim() !== "") {
+    // Pesquisa no Google
+    window.open(`https://www.google.com/search?q=${encodeURIComponent(termo)}`, "_blank");
+  }
+}  
+  </script>
