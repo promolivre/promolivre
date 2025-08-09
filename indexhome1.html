@@ -123,20 +123,25 @@
       <button onclick="buscarProduto()">🔍</button>
     </div>
      
-  <header>
+     <header class="site-header">
   <div class="container header-flex">
     <h1 class="logo">PromoLivre</h1>
-    <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
-    <nav class="menu-categorias">
-      <a href="#" onclick="mostrarCategoria('celulares')" class="btn">Celulares</a>
-      <a href="#" onclick="mostrarCategoria('acessorios/Veículos')" class="btn">Acessórios/Veículos</a>
-      <a href="#" onclick="mostrarCategoria('lar')" class="btn">Lar</a>
-      <a href="#" onclick="mostrarCategoria('informatica')" class="btn">Informática</a>
-      <a href="#" onclick="mostrarCategoria('televisores')" class="btn">Televisores</a>
+
+    <!-- botão hambúrguer -->
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+
+    <!-- nav principal -->
+    <nav class="menu-categorias" id="main-nav">
+      <a href="#" class="btn" onclick="mostrarCategoria('celulares')">Celulares</a>
+      <a href="#" class="btn" onclick="mostrarCategoria('acessorios/Veículos')">Acessórios/Veículos</a>
+      <a href="#" class="btn" onclick="mostrarCategoria('lar')">Lar</a>
+      <a href="#" class="btn" onclick="mostrarCategoria('informatica')">Informática</a>
+      <a href="#" class="btn" onclick="mostrarCategoria('televisores')">Televisores</a>
     </nav>
   </div>
 </header>
-
 
   <div id="subcategorias" class="subcategorias"></div>
 
