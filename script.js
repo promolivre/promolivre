@@ -33,32 +33,3 @@ window.addEventListener('load', updateCarousel);
     // Pesquisa no Google
     window.open(`https://www.google.com/search?q=${encodeURIComponent(termo)}`, "_blank");
   }
-       
-  document.addEventListener('DOMContentLoaded', function () {
-  const btn = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.menu-categorias');
-
-  if (!btn || !nav) return; // segurança
-
-  btn.addEventListener('click', function () {
-    const opened = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!opened));
-    nav.classList.toggle('show');
-  });
-
-  // fecha o menu ao clicar em um link do menu (útil no mobile)
-  nav.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') {
-      nav.classList.remove('show');
-      btn.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // fecha com ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      nav.classList.remove('show');
-      btn.setAttribute('aria-expanded', 'false');
-    }
-  });
-});
