@@ -117,12 +117,78 @@
 </head>
   <body>
     
-   <header>
+   <!-- Barra de Pesquisa -->
+<header>
   <div class="menu-pesquisa">
-    <input type="text" id="campoPesquisa" placeholder="Buscar produtos..." oninput="filtrarProdutos()">
-    <button onclick="filtrarProdutos()">🔍</button>
+    <input type="text" id="campoPesquisa" placeholder="Buscar produtos...">
+    <button onclick="buscarProduto()">🔍</button>
   </div>
 </header>
+
+<!-- Container de Produtos (todos começam escondidos) -->
+<section id="produtos" style="display:none;">
+  <div class="produto" data-nome="Celular Samsung Galaxy S23">
+    <img src="s23.jpg" alt="Celular Samsung Galaxy S23">
+    <h3>Samsung Galaxy S23</h3>
+  </div>
+  <div class="produto" data-nome="Notebook Acer Nitro 5">
+    <img src="acernitro.jpg" alt="Notebook Acer Nitro 5">
+    <h3>Acer Nitro 5</h3>
+  </div>
+  <div class="produto" data-nome="TV LG 50 Polegadas">
+    <img src="tvlg.jpg" alt="TV LG 50 Polegadas">
+    <h3>TV LG 50"</h3>
+  </div>
+</section>
+
+<script>
+function buscarProduto() {
+  let termo = document.getElementById("campoPesquisa").value.toLowerCase();
+  let produtos = document.querySelectorAll(".produto");
+  let container = document.getElementById("produtos");
+  
+  let encontrados = false;
+
+  produtos.forEach(produto => {
+    let nome = produto.getAttribute("data-nome").toLowerCase();
+    if (termo && nome.includes(termo)) {
+      produto.style.display = "block";
+      encontrados = true;
+    } else {
+      produto.style.display = "none";
+    }
+  });
+
+  // Mostra o container apenas se houver resultado
+  container.style.display = encontrados ? "grid" : "none";
+}
+
+// Permitir Enter para buscar
+document.getElementById("campoPesquisa").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    buscarProduto();
+  }
+});
+</script>
+
+<style>
+/* Exemplo de estilo para mostrar em grade */
+#produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+.produto {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+.produto img {
+  max-width: 100%;
+}
+</style>
+
     
     <header>
   <div class="container">
