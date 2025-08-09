@@ -167,12 +167,12 @@
 </style>
 
 <script>
-  // Lista de produtos do site
+  // Lista de produtos apontando para o ID da seção ou card
   const produtos = [
-    { nome: "Acer Nitro 5"},
-    { nome: "iPhone 14", link: "https://promolivre.github.io/promolivre/produtos/iphone-14" },
-    { nome: "Smart TV Samsung", link: "https://promolivre.github.io/promolivre/produtos/tv-samsung" },
-    { nome: "Mouse Gamer", link: "https://promolivre.github.io/promolivre/produtos/mouse-gamer" }
+    { nome: "Apple iPhone 15 Pro", id: "celulares" },
+    { nome: "Samsung Galaxy S24", id: "celulares" },
+    { nome: "Motorola Edge 40", id: "celulares" }
+    // Adicione mais produtos com o ID da seção onde estão
   ];
 
   function buscarProduto() {
@@ -194,7 +194,12 @@
         const item = document.createElement("div");
         item.classList.add("resultado-item");
         item.textContent = produto.nome;
-        item.onclick = () => window.location.href = produto.link;
+        item.onclick = () => {
+          const destino = document.getElementById(produto.id);
+          if (destino) {
+            destino.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        };
         resultados.appendChild(item);
       });
     }
