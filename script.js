@@ -33,3 +33,16 @@ window.addEventListener('load', updateCarousel);
     // Pesquisa no Google
     window.open(`https://www.google.com/search?q=${encodeURIComponent(termo)}`, "_blank");
   }
+    
+  <script>
+function buscarProduto() {
+  const termo = document.getElementById('campoPesquisa').value.toLowerCase();
+  const produtos = document.querySelectorAll('.produto');
+
+  produtos.forEach(produto => {
+    const nome = produto.innerText.toLowerCase();
+    produto.style.display = nome.includes(termo) ? '' : 'none';
+  });
+}
+</script>
+
