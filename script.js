@@ -33,9 +33,3 @@ window.addEventListener('load', updateCarousel);
     // Pesquisa no Google
     window.open(`https://www.google.com/search?q=${encodeURIComponent(termo)}`, "_blank");
   }
-}  
-  </script>
-document.querySelector(".menu-toggle").addEventListener("click", () => {
-  document.querySelector(".menu-categorias").classList.toggle("show");
-});
-
