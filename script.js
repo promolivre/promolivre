@@ -35,3 +35,7 @@ window.addEventListener('load', updateCarousel);
   }
 }  
   </script>
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+  document.querySelector(".menu-categorias").classList.toggle("show");
+});
+
