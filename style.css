@@ -435,6 +435,7 @@ header nav ul li a {
 }
 <style>
 .menu-pesquisa {
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
