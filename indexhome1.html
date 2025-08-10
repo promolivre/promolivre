@@ -175,14 +175,6 @@
     // Adicione mais produtos com seus respectivos IDs
   ];
 
-  function mostrarCategoria(categoriaId) {
-    // Esconde todas as categorias
-    document.querySelectorAll(".categoria-section").forEach(sec => sec.style.display = "none");
-    // Mostra a categoria correta
-    const cat = document.getElementById(categoriaId);
-    if (cat) cat.style.display = "block";
-  }
-
   function buscarProduto() {
     const termo = document.getElementById("campoPesquisa").value.toLowerCase();
     const resultados = document.getElementById("resultados");
@@ -203,13 +195,10 @@
         item.classList.add("resultado-item");
         item.textContent = produto.nome;
         item.onclick = () => {
-          // Mostra a categoria certa
-          mostrarCategoria(produto.categoria);
-          // Espera abrir a categoria e rola até o produto
-          setTimeout(() => {
-            const destino = document.getElementById(produto.id);
-            if (destino) destino.scrollIntoView({ behavior: "smooth", block: "start" });
-          }, 50);
+          const destino = document.getElementById(produto.id);
+          if (destino) {
+            destino.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         };
         resultados.appendChild(item);
       });
