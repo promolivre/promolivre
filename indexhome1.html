@@ -167,9 +167,10 @@
 </style>
 
 <script>
+  // Lista de produtos com o ID exato do card
   const produtos = [
-    { nome: "Apple iPhone 15 Pro", id: "produto-iphone-15-pro" }
-    // Adicione os outros produtos aqui
+    { nome: "Apple iPhone 15 Pro", id: "iphone-15-pro" },
+    // Adicione mais produtos com seus respectivos IDs
   ];
 
   function buscarProduto() {
@@ -195,8 +196,6 @@
           const destino = document.getElementById(produto.id);
           if (destino) {
             destino.scrollIntoView({ behavior: "smooth", block: "start" });
-          } else {
-            console.error(`Elemento com id "${produto.id}" não encontrado`);
           }
         };
         resultados.appendChild(item);
