@@ -1,278 +1,643 @@
-/* style.css - Tema azul moderno para PromoLivre */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f8f8f8; /* Fundo mais claro */
   color: #333;
   line-height: 1.6;
+  scroll-behavior: smooth; /* Rolagem suave para âncoras */
 }
-.top-bar {
-  background-color: #fff;
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Campo de Pesquisa Fixo */
+.menu-pesquisa {
+  position: sticky; /* Alterado para sticky para seguir a rolagem */
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #3483fa; /* Cor primária do Mercado Livre */
   padding: 10px 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1001; /* Maior z-index */
+}
+
+.menu-pesquisa input {
+  flex: 1; /* Permite que o input ocupe o espaço disponível */
+  max-width: 500px; /* Limita largura do input */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px; /* Bordas mais arredondadas */
+  outline: none;
+  font-size: 1rem;
+  background-color: #ffffff;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.menu-pesquisa button {
+  padding: 10px 18px;
+  border: none;
+  background: #ffe600; /* Cor amarela do Mercado Livre */
+  color: #333;
+  font-size: 1.1rem;
+  border-radius: 25px; /* Bordas mais arredondadas */
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.menu-pesquisa button:hover {
+  background: #ffcc00;
+}
+
+.resultados-pesquisa {
+  margin-top: 55px; /* Ajusta conforme altura do menu de pesquisa */
+  display: none;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-top: none;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: absolute; /* Posição absoluta para sobrepor o conteúdo */
+  width: 100%;
+  left: 0;
+  z-index: 1000;
+  max-width: 500px; /* Alinha com o input */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.resultado-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.resultado-item:hover {
+  background: #ececec;
+}
+
+
+/* Header Principal */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  padding: 15px 0;
   position: sticky;
-  top: 0;
+  top: 55px; /* Abaixo da barra de pesquisa */
   z-index: 1000;
 }
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #007bff;
-}
-.search-box {
+
+header .header-content {
   display: flex;
-  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
 }
-.search-box input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+
+header .logo {
+  font-size: 2rem; /* Aumenta o tamanho da logo */
+  font-weight: 700;
+  color: #3483fa; /* Cor primária */
+  margin-right: 20px;
 }
-.search-box button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.menu-categorias a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-}
-.menu-categorias a:hover {
-  color: #0056b3;
-}
+
+/* Botão Hamburguer */
 .hamburger {
-  font-size: 1.5rem;
+  font-size: 2rem;
   background: none;
   border: none;
+  color: #333;
   cursor: pointer;
-  display: none;
+  display: none; /* Esconde no desktop */
 }
-@media (max-width: 768px) {
-  .menu-categorias {
-    display: none;
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  .menu-categorias.show { display: flex; }
-  .hamburger { display: block; }
+
+/* Menu de Categorias */
+.menu-categorias {
+  display: flex;
+  gap: 25px; /* Aumenta o espaçamento */
+  flex-grow: 1; /* Permite que o menu ocupe espaço */
+  justify-content: flex-end; /* Alinha à direita no desktop */
 }
-.carousel-section {
-  background: #fff;
-  padding: 40px 20px;
+
+.menu-categorias a {
+  text-decoration: none;
+  color: #555; /* Cor mais suave para os links */
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.2s ease;
+  padding: 5px 0; /* Padding para melhor área de clique */
+}
+
+.menu-categorias a:hover {
+  color: #3483fa; /* Cor primária no hover */
+  transform: translateY(-2px);
+}
+
+/* Subcategorias */
+.subcategorias {
+  padding: 20px;
+  background-color: #eef5ff; /* Fundo mais claro e suave */
   text-align: center;
+  display: none;
+  border-bottom: 1px solid #ccddee;
 }
+
+.subcategorias h3 {
+  margin-bottom: 15px;
+  color: #3483fa;
+  font-size: 1.3rem;
+}
+
+.subcategorias ul {
+  list-style: none;
+  padding: 0;
+  display: flex; /* Layout em linha */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.subcategorias li {
+  background-color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: background-color 0.3s ease;
+}
+
+.subcategorias li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #3483fa, #1e56b3); /* Gradiente azul Mercado Livre */
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 0 0 15px 15px; /* Bordas arredondadas na parte inferior */
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.hero h2 {
+  font-size: 3rem; /* Fonte maior */
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.btn {
+  background-color: #ffe600;
+  color: #333;
+  padding: 14px 30px; /* Padding maior */
+  border-radius: 8px; /* Bordas mais arredondadas */
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+  background-color: #ffcc00;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Seções de Categorias e Produtos */
+.categoria-section {
+  padding: 60px 0;
+  background: #fff;
+  margin-bottom: 30px; /* Espaço entre as seções */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  display: none; /* Por padrão ocultas, controladas por JS */
+}
+
+.categoria-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #333;
+  border-left: 6px solid #3483fa; /* Linha de destaque */
+  padding-left: 20px;
+  text-align: left; /* Alinhamento à esquerda */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cards um pouco maiores */
+  gap: 30px; /* Espaçamento maior entre cards */
+  justify-content: center; /* Centraliza itens se houver espaço */
+}
+
+.card {
+  background-color: #fdfdfd;
+  border-radius: 12px; /* Mais arredondado */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* Sombra mais suave e proeminente */
+  padding: 25px; /* Mais padding */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Para o disclaimer */
+  overflow: hidden; /* Garante que nada saia das bordas */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-8px); /* Efeito de elevação */
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 220px; /* Altura um pouco maior para imagens */
+  object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #f0f0f0; /* Fundo para imagens vazias */
+}
+
+.card h3 {
+  font-size: 1.3rem; /* Fonte um pouco maior */
+  margin-bottom: 12px;
+  color: #444;
+  line-height: 1.4;
+  flex-grow: 1; /* Permite que o título ocupe espaço */
+}
+
+.card p {
+  font-size: 1.4rem; /* Preço maior e mais visível */
+  font-weight: 700;
+  color: #3483fa; /* Cor do preço */
+  margin-bottom: 8px;
+}
+
+.price-disclaimer {
+  font-size: 0.85rem;
+  color: #777;
+  display: block; /* Garante que fique em uma nova linha */
+  margin-bottom: 15px;
+}
+
+/* Carrossel de Destaque */
+.carousel-section {
+  background: #f8f8f8; /* Fundo mais claro */
+  padding: 60px 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.carousel-section h2 {
+  margin-bottom: 40px;
+  color: #333;
+  font-size: 2.2rem;
+  border-left: 6px solid #ffe600; /* Destaque amarelo */
+  padding-left: 20px;
+  display: inline-block; /* Para a borda lateral */
+}
+
 .carousel-container {
   position: relative;
-  max-width: 1000px;
-  margin: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.carousel-track-container {
   overflow: hidden;
 }
+
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Curva de transição mais suave */
+  padding: 0;
+  margin: 0;
   list-style: none;
 }
+
 .carousel-item {
-  min-width: 33.33%;
-  padding: 10px;
+  min-width: calc(100% / 3); /* 3 itens por padrão */
+  box-sizing: border-box;
+  padding: 15px; /* Mais padding */
+  text-align: center;
 }
+
+.carousel-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .carousel-item img {
   width: 100%;
-  border-radius: 8px;
+  max-height: 250px; /* Altura maior */
+  object-fit: contain;
+  border-radius: 10px;
+  background: #eee;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
 }
+
+.carousel-item img:hover {
+  transform: scale(1.03);
+}
+
+.carousel-item h3 {
+  margin: 15px 0 8px;
+  color: #444;
+  font-size: 1.2rem;
+}
+
+.carousel-item p {
+  color: #3483fa;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6); /* Mais escuro */
   color: white;
   border: none;
-  padding: 10px;
+  font-size: 30px; /* Botão maior */
+  padding: 12px 18px;
   cursor: pointer;
+  z-index: 1;
   border-radius: 50%;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
-.carousel-btn.prev { left: 10px; }
-.carousel-btn.next { right: 10px; }
-.categoria-section {
-  padding: 40px 20px;
-  background: #fff;
-  margin-top: 20px;
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+
+.carousel-btn.prev {
+  left: 15px;
 }
-.card {
-  background: #fdfdfd;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.3s;
+
+.carousel-btn.next {
+  right: 15px;
 }
-.card:hover { transform: scale(1.03); }
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  border-radius: 8px;
-}
-.card h3 {
-  font-size: 1.1rem;
-  margin: 10px 0;
-}
-.card p {
-  color: #007bff;
-  font-weight: bold;
-}
-.card a {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 8px 15px;
-  background: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-.card a:hover { background: #0056b3; }
-footer {
-  background: #222;
-  color: #aaa;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-}
-.carousel-container {
+
+/* Carousel de Imagens dentro do Card (Exemplo) */
+.carousel-card-images {
     position: relative;
-    display: flex;
-    align-items: center;
+    width: 100%;
+    height: 220px;
+    margin-bottom: 20px;
     overflow: hidden;
+    border-radius: 8px;
+    background-color: #f0f0f0;
 }
 
-.product-grid {
+.carousel-card-images img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-card-images img.hidden {
+    opacity: 0;
+    pointer-events: none; /* Impede interação com imagens ocultas */
+}
+
+.carousel-card-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
     display: flex;
-    transition: transform 0.4s ease;
-    gap: 16px;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 2;
 }
 
-.prev-btn, .next-btn {
-    background-color: rgba(0,0,0,0.5);
+.carousel-card-nav button {
+    background: rgba(0, 0, 0, 0.4);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 5px 10px;
     cursor: pointer;
-    font-size: 1.5rem;
     border-radius: 50%;
-    position: absolute;
-    z-index: 10;
-    top: 50%;
-    transform: translateY(-50%);
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
 }
 
-.prev-btn { left: 10px; }
-.next-btn { right: 10px; }
-
-.prev-btn:hover, .next-btn:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-/* HEADER acima de tudo */
-.site-header {
-  position: sticky;
-  top: 0;
-  background: #0b63b8; /* seu azul */
-  z-index: 9999; /* importante: ficar acima do carrossel */
+.carousel-card-nav button:hover {
+    background: rgba(0, 0, 0, 0.7);
 }
 
-/* HAMBURGUER */
-.hamburger {
-  width: 44px;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 10000;
-  position: relative;
+
+/* Sobre e Contato */
+.sobre, .contato {
+  padding: 60px 0;
+  background-color: #f0f0f0; /* Fundo mais claro para seções secundárias */
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-/* simples animação visual do hambúrguer */
-.hamburger .hamburger-box { display:inline-block; width:22px; height:16px; position:relative; }
-.hamburger .hamburger-inner,
-.hamburger .hamburger-inner::before,
-.hamburger .hamburger-inner::after {
-  content: "";
+.sobre h2, .contato h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  color: #333;
+}
+
+.sobre p, .contato p {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.15rem;
+  color: #555;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #aaa;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  margin-top: 50px;
+  border-top: 5px solid #3483fa; /* Linha de destaque no footer */
+}
+
+/* Botão "Ver Mais" */
+.next-page-btn {
   display: block;
-  background: #fff;
-  height: 2px;
-  border-radius: 2px;
-  position: absolute;
-  left: 0;
-  right: 0;
+  width: fit-content;
+  margin: 40px auto 0 auto;
+  background-color: #3483fa;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
-.hamburger .hamburger-inner { top: 50%; transform: translateY(-50%); }
-.hamburger .hamburger-inner::before { top: -7px; }
-.hamburger .hamburger-inner::after  { bottom: -7px; }
 
-/* NAV MOBILE (off-canvas) */
-.mobile-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 280px;
-  max-width: 85%;
-  background: #0b63b8;
-  color: #fff;
-  padding: 22px;
-  transform: translateX(-110%);
-  transition: transform .35s cubic-bezier(.2,.8,.2,1);
-  z-index: 9998; /* menor que header, maior que resto */
-  box-shadow: 2px 0 12px rgba(0,0,0,0.18);
-  overflow-y: auto;
+.next-page-btn:hover {
+  background-color: #2968c8;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
-.mobile-nav.open { transform: translateX(0); }
 
-/* overlay que bloqueia clique no resto da página */
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
-  z-index: 9997;
+/* Responsividade */
+@media (max-width: 1024px) {
+  .carousel-item {
+    min-width: 50%; /* 2 itens em tablets */
+  }
 }
-.nav-overlay.show { display: block; }
 
-/* links dentro do menu */
-.mobile-nav ul { list-style: none; padding: 0; margin: 0; }
-.mobile-nav li + li { margin-top: 10px; }
-.mobile-nav a { color: #fff; text-decoration: none; display:block; padding: 10px 6px; border-radius: 6px; }
+@media (max-width: 768px) {
+  .menu-pesquisa {
+    padding: 10px;
+    top: 0;
+  }
+  .menu-pesquisa input {
+    width: 100%;
+  }
 
-/* evita scroll do body quando menu aberto */
-.no-scroll { overflow: hidden; }
+  header {
+    top: 55px; /* Ajusta conforme altura da barra de pesquisa */
+  }
 
-/* garante carrossel atrás do header */
-.carousel-container { z-index: 1; position: relative; }
-.prev-btn, .next-btn { z-index: 5; } /* botões do carrossel não devem cobrir o header */
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start; /* Alinha itens do header à esquerda no mobile */
+  }
+
+  .logo {
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .hamburger {
+    display: block; /* Mostra botão no mobile */
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 1002; /* Garante que o hamburguer fique acima do menu */
+  }
+
+  .menu-categorias {
+    display: none; /* Esconde o menu por padrão */
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px; /* Abaixo do header */
+    right: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    z-index: 990;
+    align-items: center; /* Centraliza links no mobile */
+  }
+
+  .menu-categorias.show {
+    display: flex; /* Mostra o menu quando a classe 'show' está presente */
+  }
+
+  .menu-categorias a {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .menu-categorias a:last-child {
+    border-bottom: none;
+  }
+
+  .hero h2 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .categoria-section h2, .carousel-section h2 {
+    font-size: 1.8rem;
+    padding-left: 15px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* Uma coluna em telas menores */
+  }
+
+  .carousel-item {
+    min-width: 100%; /* Um item por vez no carrossel em mobile */
+  }
+
+  .carousel-btn {
+    font-size: 24px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-pesquisa input {
+    font-size: 0.9rem;
+  }
+  .menu-pesquisa button {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+  .logo {
+    font-size: 1.8rem;
+  }
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .card {
+    padding: 15px;
+  }
+  .card h3 {
+    font-size: 1rem;
+  }
+  .card p {
+    font-size: 1.2rem;
+  }
+}
 
