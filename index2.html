@@ -22,9 +22,9 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Adiciona um padding ao body para compensar o cabeçalho fixo */
+        /* Adiciona um padding ao body para compensar a altura do header-top (a parte sempre visível do cabeçalho) */
         body {
-            padding-top: 130px; /* Ajuste este valor se o seu cabeçalho mudar de altura */
+            padding-top: 60px; /* Altura aproximada do header-top. Ajuste se necessário. */
         }
 
         .header-top {
@@ -34,6 +34,7 @@
             padding: 10px 20px;
             background-color: #fff;
             /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); -- Removido daqui, pois o header pai já tem */
+            min-height: 40px; /* Garante uma altura mínima para o header-top */
         }
 
         .logo {
@@ -108,19 +109,22 @@
         }
 
         .menu-toggle {
-            display: none; /* Esconder em desktop */
+            display: none; /* Esconder em desktop, será mostrado apenas em mobile */
             font-size: 24px;
             cursor: pointer;
         }
 
         .menu-categorias {
-            /* position: sticky; -- Removido, já que o header é fixo */
-            /* top: 0; -- Removido, já que o header é fixo */
+            /* Por padrão, em telas grandes, o menu de categorias está visível e centralizado */
+            display: flex; /* Usar flex para os botões */
+            justify-content: center;
             background-color: #fff;
             padding: 10px 0;
-            /* z-index: 1000; -- Removido, já que o header pai já tem */
             text-align: center;
-            /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); -- Removido daqui, pois o header pai já tem */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* Transição suave */
+            max-height: 100px; /* Altura visível em desktop, o suficiente para os botões */
+            overflow: hidden; /* Esconde o excesso se houver muitos botões em uma linha */
         }
 
         .menu-categorias .btn {
@@ -297,13 +301,13 @@
             color: #000;
         }
 
-        /* Responsividade para o menu de categorias */
+        /* Responsividade para o menu de categorias (mobile) */
         @media (max-width: 768px) {
             .search-bar {
                 margin: 0 10px;
             }
             .user-actions {
-                display: none; /* Oculta ações do usuário em mobile, pode ser movido para o menu hambúrguer */
+                display: none; /* Oculta ações do usuário em mobile */
             }
             .menu-toggle {
                 display: block; /* Mostra o ícone do hambúrguer */
@@ -314,23 +318,28 @@
                 align-items: flex-start;
                 padding: 10px 20px;
                 position: absolute;
-                top: 60px; /* Abaixo do cabeçalho */
+                top: 60px; /* Abaixo do header-top fixo */
                 left: 0;
                 width: 100%;
                 background-color: #fff;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                max-height: 0; /* Começa com altura 0 para a transição */
+                opacity: 0; /* Começa invisível para a transição */
+                overflow: hidden; /* Garante que o conteúdo seja cortado */
             }
             .menu-categorias.show {
                 display: flex; /* Mostra o menu quando a classe 'show' é adicionada */
+                max-height: 200px; /* Altura máxima quando aberto (ajuste conforme o número de botões) */
+                opacity: 1; /* Torna visível */
             }
             .menu-categorias .btn {
                 width: 100%;
                 text-align: left;
                 margin: 5px 0;
             }
-            /* Ajuste o padding do body para mobile se necessário */
+            /* Reajuste do padding-top do body para mobile, se a altura do header-top for diferente */
             body {
-                padding-top: 130px; /* Pode ser diferente em mobile dependendo do layout do cabeçalho */
+                padding-top: 60px; /* Mantém o mesmo padding-top que desktop, a menos que o header-top mude */
             }
         }
     </style>
@@ -352,7 +361,7 @@
             </div>
         </div>
         <nav class="menu-categorias" id="menuCategorias">
-            <a href="#" class="btn" onclick="mostrarCategoria('celulares')">Celulares</a>
+            <a href="#" class="btn" onclick="mostrarCategoria('celulares'); toggleMenu();">Celulares</a>
             </nav>
         <div id="subcategorias" class="subcategorias">
             </div>
@@ -423,7 +432,7 @@
                     <div class="card" id="iphone-16">
                         <div class="carousel-card-images">
                             <img src="Iphone16.jpg" alt="Apple iPhone 16">
-                            </div>
+                        </div>
                         <div class="carousel-card-nav">
                             <button class="prev-card-img">&#10094;</button>
                             <button class="next-card-img">&#10095;</button>
@@ -437,7 +446,7 @@
                     <div class="card" id="iphone-14">
                         <div class="carousel-card-images">
                             <img src="Iphone 14.jpg" alt="Apple iPhone 14">
-                            </div>
+                        </div>
                         <div class="carousel-card-nav">
                             <button class="prev-card-img">&#10094;</button>
                             <button class="next-card-img">&#10095;</button>
@@ -451,7 +460,7 @@
                     <div class="card" id="samsung-a05s">
                         <div class="carousel-card-images">
                             <img src="SansungA50.jpg" alt="Samsung Galaxy A05s">
-                            </div>
+                        </div>
                         <div class="carousel-card-nav">
                             <button class="prev-card-img">&#10094;</button>
                             <button class="next-card-img">&#10095;</button>
@@ -465,7 +474,7 @@
                     <div class="card" id="samsung-a25">
                         <div class="carousel-card-images">
                             <img src="A25 Sansung.jpg" alt="Samsung Galaxy A25">
-                            </div>
+                        </div>
                         <div class="carousel-card-nav">
                             <button class="prev-card-img">&#10094;</button>
                             <button class="next-card-img">&#10095;</button>
