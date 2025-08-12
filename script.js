@@ -1,57 +1,56 @@
-// script.js - Funcionalidades do PromoLivre
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('btn-hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
 
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('menuCategorias');
-  const btnBuscar = document.getElementById('btnBuscar');
-  const campoPesquisa = document.getElementById('campoPesquisa');
-  const track = document.querySelector('.carousel-track');
-  const prevButton = document.querySelector('.carousel-btn.prev');
-  const nextButton = document.querySelector('.carousel-btn.next');
-  const items = Array.from(track.children);
-  let currentIndex = 0;
-
-  // Menu responsivo
-  hamburger.addEventListener('click', () => {
-    menu.classList.toggle('show');
-  });
-
-  // Busca de produtos
-  btnBuscar.addEventListener('click', buscarProduto);
-  campoPesquisa.addEventListener('keypress', e => {
-    if (e.key === 'Enter') buscarProduto();
-  });
-
-  function buscarProduto() {
-    const termo = campoPesquisa.value.toLowerCase();
-    if (termo.trim() === '') return;
-
-    document.querySelectorAll('.card').forEach(card => {
-      const nome = card.querySelector('h3').textContent.toLowerCase();
-      card.style.display = nome.includes(termo) ? '' : 'none';
-    });
+  if (!btn || !mobileNav) {
+    console.warn('Hamburger ou mobile-nav não encontrados no DOM.');
+    return;
   }
 
-  // Carrossel
-  function updateCarousel() {
-    const itemWidth = items[0].getBoundingClientRect().width;
-    track.style.transform = `translateX(-${itemWidth * currentIndex}px)`;
+  // cria overlay se não existir
+  let overlay = document.querySelector('.nav-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    document.body.appendChild(overlay);
   }
 
-  nextButton.addEventListener('click', () => {
-    if (currentIndex < items.length - getVisibleCount()) currentIndex++;
-    updateCarousel();
-  });
-
-  prevButton.addEventListener('click', () => {
-    if (currentIndex > 0) currentIndex--;
-    updateCarousel();
-  });
-
-  function getVisibleCount() {
-    return window.innerWidth <= 768 ? 1 : 3;
+  function openNav() {
+    mobileNav.classList.add('open');
+    overlay.classList.add('show');
+    btn.setAttribute('aria-expanded', 'true');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
   }
 
-  window.addEventListener('resize', updateCarousel);
-  updateCarousel();
+  function closeNav() {
+    mobileNav.classList.remove('open');
+    overlay.classList.remove('show');
+    btn.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
+  }
+
+  // toggle no clique do botão
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (mobileNav.classList.contains('open')) closeNav();
+    else openNav();
+  });
+
+  // fechar ao clicar no overlay
+  overlay.addEventListener('click', closeNav);
+
+  // fechar ao clicar em um link do menu (comportamento comum)
+  mobileNav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') closeNav();
+  });
+
+  // fechar com ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+  });
+
+  // segurança: se outro script impedir clique (pointer-events), força foco no botão
+  btn.style.pointerEvents = 'auto';
 });
