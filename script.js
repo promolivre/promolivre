@@ -1,86 +1,48 @@
-// script.js - Funcionalidades do PromoLivre com carrossel automático
-
 document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('menuCategorias');
-  const btnBuscar = document.getElementById('btnBuscar');
-  const campoPesquisa = document.getElementById('campoPesquisa');
-  const track = document.querySelector('.carousel-track');
-  const prevButton = document.querySelector('.carousel-btn.prev');
-  const nextButton = document.querySelector('.carousel-btn.next');
-  const items = Array.from(track.children);
-  let currentIndex = 0;
-  let autoScrollInterval;
+    const track = document.querySelector('.product-grid');
+    const slides = document.querySelectorAll('.product-grid .product');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
 
-  // Menu responsivo
-  hamburger.addEventListener('click', () => {
-    menu.classList.toggle('show');
-  });
+    let index = 0;
+    let autoSlide;
 
-  // Busca de produtos
-  btnBuscar.addEventListener('click', buscarProduto);
-  campoPesquisa.addEventListener('keypress', e => {
-    if (e.key === 'Enter') buscarProduto();
-  });
+    function showSlide(i) {
+        const slideWidth = slides[0].offsetWidth + 16; // 16 = gap
+        track.style.transform = `translateX(${-i * slideWidth}px)`;
+    }
 
-  function buscarProduto() {
-    const termo = campoPesquisa.value.toLowerCase();
-    if (termo.trim() === '') return;
+    function nextSlide() {
+        index++;
+        if (index >= slides.length) index = 0;
+        showSlide(index);
+    }
 
-    document.querySelectorAll('.card').forEach(card => {
-      const nome = card.querySelector('h3').textContent.toLowerCase();
-      card.style.display = nome.includes(termo) ? '' : 'none';
+    function prevSlide() {
+        index--;
+        if (index < 0) index = slides.length - 1;
+        showSlide(index);
+    }
+
+    function startAuto() {
+        stopAuto();
+        autoSlide = setInterval(nextSlide, 4000);
+    }
+
+    function stopAuto() {
+        clearInterval(autoSlide);
+    }
+
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        startAuto();
     });
-  }
 
-  // Carrossel
-  function updateCarousel() {
-    const itemWidth = items[0].getBoundingClientRect().width;
-    track.style.transform = `translateX(-${itemWidth * currentIndex}px)`;
-  }
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        startAuto();
+    });
 
-  function nextSlide() {
-    if (currentIndex < items.length - getVisibleCount()) {
-      currentIndex++;
-    } else {
-      currentIndex = 0;
-    }
-    updateCarousel();
-  }
-
-  function prevSlide() {
-    if (currentIndex > 0) {
-      currentIndex--;
-    } else {
-      currentIndex = items.length - getVisibleCount();
-    }
-    updateCarousel();
-  }
-
-  nextButton.addEventListener('click', () => {
-    nextSlide();
-    resetAutoScroll();
-  });
-
-  prevButton.addEventListener('click', () => {
-    prevSlide();
-    resetAutoScroll();
-  });
-
-  function getVisibleCount() {
-    return window.innerWidth <= 768 ? 1 : 3;
-  }
-
-  function startAutoScroll() {
-    autoScrollInterval = setInterval(nextSlide, 4000); // troca a cada 4s
-  }
-
-  function resetAutoScroll() {
-    clearInterval(autoScrollInterval);
-    startAutoScroll();
-  }
-
-  window.addEventListener('resize', updateCarousel);
-  updateCarousel();
-  startAutoScroll();
+    startAuto();
+    window.addEventListener('resize', () => showSlide(index));
 });
