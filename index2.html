@@ -1,255 +1,823 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minha Loja Virtual</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Loja Virtual</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .menu-categorias {
-      position: sticky;
-      top: 0;
-      background-color: #fff;
-      padding: 10px 0;
-      z-index: 1000;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+        /* Estilos para o menu de categorias no cabeçalho */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-    .menu-categorias .btn {
-      margin: 5px 10px;
-      padding: 10px 15px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3483fa;
+            text-decoration: none;
+        }
 
-    .menu-categorias .btn:hover {
-      background-color: #0056b3;
-    }
+        .search-bar {
+            display: flex;
+            flex-grow: 1;
+            margin: 0 20px;
+            position: relative; /* Para posicionar os resultados */
+        }
 
-    .categoria-section {
-      padding: 40px 20px;
-    }
+        .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 16px;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-    }
+        .search-bar button {
+            background-color: #3483fa;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin-left: -40px; /* Para sobrepor o campo de input */
+            cursor: pointer;
+        }
 
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+        #resultados {
+            position: absolute;
+            top: 100%; /* Abaixo do campo de busca */
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            display: none; /* Escondido por padrão */
+            z-index: 1001; /* Acima de outros elementos */
+        }
 
-    .card {
-      flex: 1 1 300px;
-      border: 1px solid #ccc;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+        .resultado-item {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
 
-    .card img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
+        .resultado-item:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .no-results {
+            padding: 10px;
+            color: #555;
+            text-align: center;
+        }
 
-    .card h3 {
-      font-size: 18px;
-      margin: 15px 0 10px;
-    }
+        .user-actions a {
+            margin-left: 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-    .card p {
-      font-size: 16px;
-      color: #333;
-      margin-bottom: 10px;
-    }
+        .menu-toggle {
+            display: none; /* Esconder em desktop */
+            font-size: 24px;
+            cursor: pointer;
+        }
 
-    .card .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background-color: #28a745;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .menu-categorias {
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            padding: 10px 0;
+            z-index: 1000;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-    .card .btn:hover {
-      background-color: #218838;
-    }
+        .menu-categorias .btn {
+            margin: 5px 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
 
-    /* SUBCATEGORIAS */
-    .subcategorias {
-      padding: 20px;
-      background-color: #f9f9f9;
-      text-align: center;
-      display: none;
-    }
+        .menu-categorias .btn:hover {
+            background-color: #0056b3;
+        }
 
-    .subcategorias h3 {
-      margin-bottom: 15px;
-    }
+        .categoria-section {
+            padding: 40px 20px;
+        }
 
-    .subcategorias ul {
-      list-style: none;
-      padding: 0;
-      display: inline-block;
-      text-align: left;
-    }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
 
-    .subcategorias li {
-      padding: 5px 0;
-    }
-  </style>
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center; /* Centraliza os cards */
+        }
+
+        .card {
+            flex: 1 1 300px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            display: flex; /* Para flexbox interno do card */
+            flex-direction: column; /* Coluna para conteúdo do card */
+            align-items: center; /* Centraliza itens no card */
+            position: relative; /* Para os botões do carrossel de imagens */
+            overflow: hidden; /* Garante que imagens extras não vazem */
+        }
+
+        /* Estilos do carrossel de imagens dentro do card */
+        .carousel-card-images {
+            width: 100%;
+            height: 200px; /* Altura fixa para as imagens */
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .carousel-card-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Mantém a proporção e se encaixa */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-card-images img.hidden {
+            opacity: 0;
+            pointer-events: none; /* Impede interação quando oculto */
+        }
+
+        .carousel-card-nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            width: 100%;
+            padding: 0 5px;
+            box-sizing: border-box;
+            z-index: 10; /* Garante que os botões fiquem acima das imagens */
+        }
+
+        .carousel-card-nav button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1; /* Alinha o texto/ícone verticalmente */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px; /* Largura e altura para botões redondos */
+            height: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-card-nav button:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin: 15px 0 10px;
+            min-height: 50px; /* Garante altura mínima para alinhamento */
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card .btn {
+            display: inline-block;
+            margin-top: auto; /* Empurra o botão para a parte inferior */
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card .btn:hover {
+            background-color: #218838;
+        }
+
+        /* SUBCATEGORIAS */
+        .subcategorias {
+            padding: 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+            display: none; /* Escondido por padrão, será exibido via JS */
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .subcategorias h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .subcategorias ul {
+            list-style: none;
+            padding: 0;
+            display: flex; /* Para subcategorias lado a lado */
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .subcategorias li {
+            padding: 0;
+        }
+
+        .subcategorias li a {
+            display: block;
+            padding: 8px 15px;
+            background-color: #e0e0e0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .subcategorias li a:hover {
+            background-color: #d0d0d0;
+            color: #000;
+        }
+
+        /* Responsividade para o menu de categorias */
+        @media (max-width: 768px) {
+            .search-bar {
+                margin: 0 10px;
+            }
+            .user-actions {
+                display: none; /* Oculta ações do usuário em mobile, pode ser movido para o menu hambúrguer */
+            }
+            .menu-toggle {
+                display: block; /* Mostra o ícone do hambúrguer */
+            }
+            .menu-categorias {
+                display: none; /* Esconde o menu em mobile por padrão */
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 20px;
+                position: absolute;
+                top: 60px; /* Abaixo do cabeçalho */
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            .menu-categorias.show {
+                display: flex; /* Mostra o menu quando a classe 'show' é adicionada */
+            }
+            .menu-categorias .btn {
+                width: 100%;
+                text-align: left;
+                margin: 5px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Seções de produtos por categoria -->
- <section id="celulares" class="categoria-section">
-  <div class="container">
-    <h2>Celulares</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="iphonevender.jpg" alt="Celular">
-        <h3>Apple iPhone 15 Pro (256 GB) - Titânio Natural - Distribuidor Autorizado</h3>
-        <p>R$ 10.105,00</p>
-        </p>Preço sujeito a alterações no Mercado Livre</p>
-        <a href="https://mercadolivre.com/sec/1HMpPcz" class="btn" target="_blank">Comprar</a>
-    </div>
-  </div>
-</div>
-        
-<div class="container">
-  <div class="grid">
-    <div class="card">
-      <div class="carousel">
-        <class="prev" onclick="prevSlide(this)">
-        <div class="carousel-images">
-          <img src="Sansung S23 Ultra.jpg" alt="Celular">
-          <img src="Sansung S23 Ultra traseira.jpg" alt="Celular">
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">Minha Loja</a>
+            <div class="search-bar">
+                <input type="text" id="campoPesquisa" placeholder="Buscar produtos..." onkeyup="buscarProduto()">
+                <button onclick="buscarProduto()"><i class="fas fa-search"></i></button>
+                <div id="resultados"></div> </div>
+            <div class="user-actions">
+                <a href="#">Minha Conta</a>
+                <a href="#">Carrinho</a>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-        <class="next" onclick="nextSlide(this)">
-      </div>
-      <h3>Samsung Galaxy S23 Ultra 5G Dual SIM 256 GB Preto 12 GB RAM</h3>
-      <p>R$ 5.506,00</p>
-    </p>Preço sujeito a alterações no Mercado Livre</p>
-      <a href="https://mercadolivre.com/sec/2dkiwy8" target="_blank" class="btn">Comprar</a>
-    </div>
-  </div>
-</div>
+        <nav class="menu-categorias" id="menuCategorias">
+            <a href="#" class="btn" onclick="mostrarCategoria('celulares')">Celulares</a>
+            <a href="#" class="btn" onclick="mostrarCategoria('acessorios-Veiculos')">Acessórios para Veículos</a>
+            <a href="#" class="btn" onclick="mostrarCategoria('lar')">Casa e Lar</a>
+            <a href="#" class="btn" onclick="mostrarCategoria('informatica')">Informática</a>
+            <a href="#" class="btn" onclick="mostrarCategoria('televisores')">Televisores</a>
+        </nav>
+        <div id="subcategorias" class="subcategorias">
+            </div>
+    </header>
 
- <div class="container">
-    <div class="grid">
-      <div class="card">
-        <img src="XiamiPoco.Jpg" alt="Celular">
-        <h3>Xiaomi Poco C75 256gb 8gb Ram Dual Sim Fone + Relogio Brinde</h3>
-        <p>R$ 1.044,90</p>
-        </p>Preço sujeito a alterações no Mercado Livre</p>
-        <a href="https://mercadolivre.com/sec/18YemsV" class="btn" target="_blank">Comprar</a>     
-    </div>
-  </div>
-</div>
+    <main>
+        <section id="celulares" class="categoria-section">
+            <div class="container">
+                <h2>Celulares</h2>
+                <div class="grid">
+                    <div class="card" id="iphone-15-pro">
+                        <div class="carousel-card-images">
+                            <img src="iphonevender.jpg" alt="Apple iPhone 15 Pro">
+                            </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Apple iPhone 15 Pro (256 GB) - Titânio Natural - Distribuidor Autorizado</h3>
+                        <p>R$ 10.105,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="https://mercadolivre.com/sec/1HMpPcz" class="btn" target="_blank">Comprar</a>
+                    </div>
 
-        
-<div class="container">
-    <div class="grid">
-      <div class="card">
-        <img src="Iphone15.jpg" alt="Celular">
-        <h3>Apple iPhone 15 (128 GB) - Preto - Distribuidor Autorizado</h3>
-        <p>R$ 4.259,00</p>
-        </p>Preço sujeito a alterações no Mercado Livre</p>
-        <a href="https://mercadolivre.com/sec/1AFMKxg" class="btn" target="_blank">Comprar</a>
-      </div>
-  </div>
-</div>
-   
-        
-<div class="container">
-    <div class="grid">
-      <div class="card">
-        <img src="Iphone16.jpg" alt="Celular">
-        <h3>Apple iPhone 16 (128 GB) - Preto - Distribuidor Autorizado</h3>
-        <p>R$ 4.739,97</p>
-       </p>Preço sujeito a alterações no Mercado Livre</p>
-        <a href="https://mercadolivre.com/sec/17SFCkf" class="btn" target="_blank">Comprar</a>
-      </div>
-    </div>
-  </div>  
+                    <div class="card" id="samsung-s23-ultra">
+                        <div class="carousel-card-images">
+                            <img src="Sansung S23 Ultra.jpg" alt="Samsung Galaxy S23 Ultra">
+                            <img src="Sansung S23 Ultra traseira.jpg" alt="Samsung Galaxy S23 Ultra Traseira">
+                            </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Samsung Galaxy S23 Ultra 5G Dual SIM 256 GB Preto 12 GB RAM</h3>
+                        <p>R$ 5.506,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="https://mercadolivre.com/sec/2dkiwy8" target="_blank" class="btn">Comprar</a>
+                    </div>
 
-   <div class="container">
-    <div class="grid">
-      <div class="card">
-        <img src="Iphone 14.jpg" alt="Celular">
-        <h3>Apple iPhone 14 (128 GB) - Estelar - Distribuidor Autorizado</h3>
-        <p>R$ 3.700,98</p>
-       </p>Preço sujeito a alterações no Mercado Livre</p>
-        <a href="https://mercadolivre.com/sec/1YgbhRg" class="btn" target="_blank">Comprar</a>
-      </div>
-  </div>
-</div>
+                    <div class="card" id="xiaomi-poco-c75">
+                        <div class="carousel-card-images">
+                            <img src="XiamiPoco.Jpg" alt="Xiaomi Poco C75">
+                            </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Xiaomi Poco C75 256gb 8gb Ram Dual Sim Fone + Relogio Brinde</h3>
+                        <p>R$ 1.044,90</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="https://mercadolivre.com/sec/18YemsV" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    
+                    <div class="card" id="iphone-15">
+                        <div class="carousel-card-images">
+                            <img src="Iphone15.jpg" alt="Apple iPhone 15">
+                            </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Apple iPhone 15 (128 GB) - Preto - Distribuidor Autorizado</h3>
+                        <p>R$ 4.259,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="https://mercadolivre.com/sec/1AFMKxg" class="btn" target="_blank">Comprar</a>
+                    </div>
 
-   <div class="container">
-    <div class="grid">
-      <div class="card">
-        <img src="SansungA50.jpg" alt="Celular">
-        <h3>Smartphone Samsung Galaxy A05s 4G 128GB 6GB RAM Câmera Traseira Tripla 50MP + 2MP + 2MP + Selfie 13MP Tela 6.7" Preto</h3>
-        <p>R$ 693.31,00</p>
-       </p>Preço sujeito a alterações no Mercado Livre</p>
-        <a href="https://mercadolivre.com/sec/1Vt9bEo" class="btn" target="_blank">Comprar</a>
-      </div>
-  </div>
-</div>
+                    <div class="card" id="iphone-16">
+                        <div class="carousel-card-images">
+                            <img src="Iphone16.jpg" alt="Apple iPhone 16">
+                            </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Apple iPhone 16 (128 GB) - Preto - Distribuidor Autorizado</h3>
+                        <p>R$ 4.739,97</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="https://mercadolivre.com/sec/17SFCkf" class="btn" target="_blank">Comprar</a>
+                    </div>
 
-   <div class="container">
-    <div class="grid">
-      <div class="card">
-        <img src="A25 Sansung.jpg" alt="Celular">
-        <h3>Samsung Galaxy A25 5G Dual SIM 128Gb Azul Escuro 6Gb Ram</h3>
-        <p>R$ 1.199,00</p>
-       </p>Preço sujeito a alterações no Mercado Livre</p>
-        <a href="https://mercadolivre.com/sec/2H2gzoH" class="btn" target="_blank">Comprar</a>
-      </div>
-  </div>
-</div>
-</section>
-<a href="indexhome1.html" class="botao-voltar">← Anterior</a>
-  
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 - PromoLivre. Todos os direitos reservados.</p>
-    </div>
-  </footer>
+                    <div class="card" id="iphone-14">
+                        <div class="carousel-card-images">
+                            <img src="Iphone 14.jpg" alt="Apple iPhone 14">
+                            </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Apple iPhone 14 (128 GB) - Estelar - Distribuidor Autorizado</h3>
+                        <p>R$ 3.700,98</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="https://mercadolivre.com/sec/1YgbhRg" class="btn" target="_blank">Comprar</a>
+                    </div>
 
-  <script>
-    // Oculta todas as seções e mostra apenas a escolhida
-    function mostrarCategoria(categoria) {
-      const secoes = document.querySelectorAll('.categoria-section');
-      secoes.forEach(secao => secao.style.display = 'none');
-      document.getElementById(categoria).style.display = 'block';
-    }
+                    <div class="card" id="samsung-a05s">
+                        <div class="carousel-card-images">
+                            <img src="SansungA50.jpg" alt="Samsung Galaxy A05s">
+                            </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Smartphone Samsung Galaxy A05s 4G 128GB 6GB RAM Câmera Traseira Tripla 50MP + 2MP + 2MP + Selfie 13MP Tela 6.7" Preto</h3>
+                        <p>R$ 693,31</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="https://mercadolivre.com/sec/1Vt9bEo" class="btn" target="_blank">Comprar</a>
+                    </div>
 
-    // Mostrar categoria inicial (Celulares por padrão)
-    window.onload = () => {
-      mostrarCategoria('celulares');
-    };
-    
-</script>
+                    <div class="card" id="samsung-a25">
+                        <div class="carousel-card-images">
+                            <img src="A25 Sansung.jpg" alt="Samsung Galaxy A25">
+                            </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Samsung Galaxy A25 5G Dual SIM 128Gb Azul Escuro 6Gb Ram</h3>
+                        <p>R$ 1.199,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="https://mercadolivre.com/sec/2H2gzoH" class="btn" target="_blank">Comprar</a>
+                    </div>
+
+                    </div>
+            </div>
+        </section>
+
+        <section id="acessorios-Veiculos" class="categoria-section" style="display: none;">
+            <div class="container">
+                <h2>Acessórios para Veículos</h2>
+                <div class="grid">
+                    <div class="card" id="camera-de-re">
+                        <div class="carousel-card-images">
+                            <img src="camera-de-re.jpg" alt="Kit Camera De Re Automotiva">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Kit Camera De Re Automotiva Marca Rhead4.3 Inch Lcd Tela Retrovisor SPOWAY</h3>
+                        <p>R$ 150,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="revitalizador-pneu">
+                        <div class="carousel-card-images">
+                            <img src="shiny-revitalizador-pneu.jpg" alt="Shiny Revitalizador Pneu">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Shiny Revitalizador Pneu Pretinho Longa Duração - Vonixx Cor Vermelho</h3>
+                        <p>R$ 35,90</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="massa-polir">
+                        <div class="carousel-card-images">
+                            <img src="massa-de-polir.jpg" alt="Massa De Polir Luxcar">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Massa De Polir Luxcar Tira Riscos Recupera Pintura Queimada</h3>
+                        <p>R$ 25,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="caneta-retok-preto">
+                        <div class="carousel-card-images">
+                            <img src="caneta-retok-preto.jpg" alt="Caneta Retok Preto">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Preto</h3>
+                        <p>R$ 20,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="caneta-retok-prata">
+                        <div class="carousel-card-images">
+                            <img src="caneta-retok-prata.jpg" alt="Caneta Retok Prata">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Prateado</h3>
+                        <p>R$ 20,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="carregador-automotivo">
+                        <div class="carousel-card-images">
+                            <img src="carregador-automotivo.jpg" alt="Carregador Automotivo">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Carregador de Bateria 12V Automotivo e Moto 300Ah</h3>
+                        <p>R$ 180,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="aditivo-paraflu">
+                        <div class="carousel-card-images">
+                            <img src="aditivo-paraflu.jpg" alt="Aditivo Paraflu">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Líquido refrigerante/anticongelante Paraflu 10-3004 ADITIVO</h3>
+                        <p>R$ 45,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="caneta-retok-vermelho">
+                        <div class="carousel-card-images">
+                            <img src="caneta-retok-vermelho.jpg" alt="Caneta Retok Vermelho">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Caneta Tira Riscos Luxcar Para Carros Pneus Rodas Móveis Cor Vermelho</h3>
+                        <p>R$ 20,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="jogo-soquete">
+                        <div class="carousel-card-images">
+                            <img src="jogo-soquete.jpg" alt="Jogo De Soquete Aço Crv">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Jogo De Soquete Aço Crv 1/4 Catraca Chave Allen C/ Maleta</h3>
+                        <p>R$ 99,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="capa-chuva-moto">
+                        <div class="carousel-card-images">
+                            <img src="capa-chuva-moto.jpg" alt="Capa De Chuva Moto">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Capa De Chuva Moto Pioneira Impermeável Pvc Motoqueiro Frio</h3>
+                        <p>R$ 70,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="modulo-taramps">
+                        <div class="carousel-card-images">
+                            <img src="modulo-taramps.jpg" alt="Modulo Taramps Ts400x4">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Modulo Taramps Ts400x4 Amplificador 400w Digital</h3>
+                        <p>R$ 250,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                     <div class="card" id="trava-volante">
+                        <div class="carousel-card-images">
+                            <img src="trava-volante.jpg" alt="Trava Anti Furto">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Trava Anti Furto Segurança Aço Volante Direção Pedal Veículo</h3>
+                        <p>R$ 85,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="lar" class="categoria-section" style="display: none;">
+            <div class="container">
+                <h2>Casa e Lar</h2>
+                <div class="grid">
+                    <div class="card" id="aspirador-po">
+                        <div class="carousel-card-images">
+                            <img src="aspirador-po.jpg" alt="Aspirador de Pó">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Aspirador de Pó Turbo</h3>
+                        <p>R$ 300,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="informatica" class="categoria-section" style="display: none;">
+            <div class="container">
+                <h2>Informática</h2>
+                <div class="grid">
+                    <div class="card" id="computador-i7">
+                        <div class="carousel-card-images">
+                            <img src="computador-i7.jpg" alt="Computador Intel Core i7">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Computador Completo Intel Core i7</h3>
+                        <p>R$ 2.500,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    <div class="card" id="computador-i5-office">
+                        <div class="carousel-card-images">
+                            <img src="computador-i5-office.jpg" alt="Computador Fácil Office Intel Core I5">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Computador Completo Fácil Office Intel Core I5</h3>
+                        <p>R$ 1.800,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    <div class="card" id="computador-i5-2eletro">
+                        <div class="carousel-card-images">
+                            <img src="computador-i5-2eletro.jpg" alt="Computador 2Eletro Top Intel Core i5">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Computador Completo 2Eletro Top Intel Core i5</h3>
+                        <p>R$ 1.950,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    <div class="card" id="computador-i5-3g">
+                        <div class="carousel-card-images">
+                            <img src="computador-i5-3g.jpg" alt="Computador I5 3º G 8gb Hd Ssd">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Computador Completo I5 3º G 8gb Hd Ssd</h3>
+                        <p>R$ 1.600,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    <div class="card" id="pc-gamer">
+                        <div class="carousel-card-images">
+                            <img src="pc-gamer.jpg" alt="Pc Gamer Completo 2eletro Go I7">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Pc Gamer Completo 2eletro Go I7</h3>
+                        <p>R$ 3.500,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    <div class="card" id="acer-nitro-v15">
+                        <div class="carousel-card-images">
+                            <img src="acer-nitro-v15.jpg" alt="Notebook Gamer Acer Nitro V15">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Notebook Gamer Acer Nitro V15</h3>
+                        <p>R$ 4.800,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    <div class="card" id="acer-aspire-5">
+                        <div class="carousel-card-images">
+                            <img src="acer-aspire-5.jpg" alt="Notebook Acer Aspire 5 Intel Core I5">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Notebook Acer Aspire 5 Intel Core I5</h3>
+                        <p>R$ 3.200,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    <div class="card" id="monitor-aoc-21">
+                        <div class="carousel-card-images">
+                            <img src="monitor-aoc-21.jpg" alt="Monitor Gamer Aoc 21.5''">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Monitor Gamer Aoc 21.5'' Full Hd Gaming 120hz</h3>
+                        <p>R$ 900,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    <div class="card" id="monitor-aoc-27">
+                        <div class="carousel-card-images">
+                            <img src="monitor-aoc-27.jpg" alt="Monitor Gamer 27 27g4/p 180hz">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Monitor Gamer 27 27g4/p 180hz</h3>
+                        <p>R$ 1.500,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    <div class="card" id="kit-monitor-teclado">
+                        <div class="carousel-card-images">
+                            <img src="kit-monitor-teclado.jpg" alt="Kit Monitor Led 17.1 Polegadas + Teclado E Mouse Sem Fio">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Kit Monitor Led 17.1 Polegadas + Teclado E Mouse Sem Fio</h3>
+                        <p>R$ 700,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="televisores" class="categoria-section" style="display: none;">
+            <div class="container">
+                <h2>Televisores</h2>
+                <div class="grid">
+                    <div class="card" id="smart-tv-50">
+                        <div class="carousel-card-images">
+                            <img src="smart-tv-50.jpg" alt="Smart TV 50” 4K">
+                        </div>
+                        <div class="carousel-card-nav">
+                            <button class="prev-card-img">&#10094;</button>
+                            <button class="next-card-img">&#10095;</button>
+                        </div>
+                        <h3>Smart TV 50” 4K</h3>
+                        <p>R$ 2.200,00</p>
+                        <p>Preço sujeito a alterações no Mercado Livre</p>
+                        <a href="#" class="btn" target="_blank">Comprar</a>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - PromoLivre. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
