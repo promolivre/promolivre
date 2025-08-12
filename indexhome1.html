@@ -1,141 +1,387 @@
-<!-- indexhome.html completo com produtos -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PromoLivre - Ofertas Exclusivas</title>
+  <title>PromoLivre - Ofertas Incríveis do Mercado Livre</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="top-bar">
-    <div class="logo">PromoLivre</div>
-    <div class="search-box">
-      <input type="text" id="campoPesquisa" placeholder="Buscar produtos...">
-      <button id="btnBuscar">🔍</button>
-    </div>
-    <nav class="menu-categorias" id="menuCategorias">
-      <a href="#celulares">Celulares</a>
-      <a href="#acessorios">Acessórios</a>
-      <a href="#lar">Lar</a>
-      <a href="#informatica">Informática</a>
-      <a href="#televisores">Televisores</a>
-    </nav>
-    <button class="hamburger" id="hamburger">☰</button>
- <!-- HEADER (coloque no topo do body, onde já estiver seu header) -->
-<header class="site-header">
-  <div class="header-inner">
-    <a class="logo" href="/">PromoLivre</a>
 
-    <!-- botão hamburguer (id único) -->
-    <button id="btn-hamburger" class="hamburger" aria-controls="mobile-nav" aria-expanded="false" aria-label="Abrir menu">
-      <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
-      </span>
-    </button>
-
-    <!-- nav desktop (mantém se já existir) -->
-    <nav class="main-nav"> 
-      <!-- links desktop aqui -->
-    </nav>
+  <div class="menu-pesquisa">
+    <input type="text" id="campoPesquisa" placeholder="Buscar produtos..." oninput="buscarProduto()">
+    <button onclick="buscarProduto()">🔍</button>
   </div>
+  <div id="resultados" class="resultados-pesquisa"></div>
 
-  <!-- NAV MOBILE (fora do fluxo normal, fica fixa) -->
-  <nav id="mobile-nav" class="mobile-nav" aria-hidden="true">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Categorias</a></li>
-      <li><a href="#">Sobre</a></li>
-      <li><a href="#">Contato</a></li>
-    </ul>
-  </nav>
-</header>
-  
-    <section class="products destaque">
-    <h3 class="section-title">Produtos em Destaque</h3>
-
-    <div class="carousel-container">
-        <button class="prev-btn" aria-label="Produto anterior">&#10094;</button>
-
-        <div class="product-grid">
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Produto 1">
-                <h4>Produto 1</h4>
-                <p>R$ 99,90</p>
-                <a href="#" class="btn">Comprar Agora</a>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Produto 2">
-                <h4>Produto 2</h4>
-                <p>R$ 149,90</p>
-                <a href="#" class="btn">Comprar Agora</a>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Produto 3">
-                <h4>Produto 3</h4>
-                <p>R$ 79,90</p>
-                <a href="#" class="btn">Comprar Agora</a>
-            </div>
-            <!-- Adicione mais produtos aqui -->
-        </div>
-
-        <button class="next-btn" aria-label="Próximo produto">&#10095;</button>
+  <header>
+    <div class="container header-content">
+      <h1 class="logo">PromoLivre</h1>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <nav class="menu-categorias" id="menuCategorias">
+        <a href="#celulares" onclick="mostrarCategoria('celulares'); toggleMenu()">Celulares</a>
+        <a href="#acessorios-Veiculos" onclick="mostrarCategoria('acessorios-Veiculos'); toggleMenu()">Acessórios Veículos</a>
+        <a href="#lar" onclick="mostrarCategoria('lar'); toggleMenu()">Lar</a>
+        <a href="#informatica" onclick="mostrarCategoria('informatica'); toggleMenu()">Informática</a>
+        <a href="#televisores" onclick="mostrarCategoria('televisores'); toggleMenu()">Televisores</a>
+      </nav>
     </div>
-</section>
-  
-  <main id="categorias">
+  </header>
+
+  <div id="subcategorias" class="subcategorias"></div>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Descubra ofertas incríveis!</h2>
+      <p>Produtos com os melhores preços do Mercado Livre</p>
+      <a href="#categorias" class="btn">Ver Todas as Categorias</a>
+    </div>
+  </section>
+
+  <section class="carousel-section">
+    <div class="container">
+      <h2>Produtos em Destaque</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn prev">❮</button>
+        <div class="carousel-track-container">
+          <ul class="carousel-track">
+            <li class="carousel-item">
+              <a href="https://mercadolivre.com/sec/11gnVMs" target="_blank">
+                <img src="acerrnitro.jpg" alt="Notebook Acer Nitro V15" />
+                <h3>Acer Nitro V15</h3>
+                <p>A partir de R$ 5.035,00</p>
+                <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+              </a>
+            </li>
+            <li class="carousel-item">
+              <a href="https://mercadolivre.com/sec/1mfvC8Z" target="_blank">
+                <img src="S25ultra.jpg" alt="Galaxy S25 Ultra" />
+                <h3>S25 Ultra</h3>
+                <p>A partir de R$ 7.199,00</p>
+                <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+              </a>
+            </li>
+            <li class="carousel-item">
+              <a href="https://www.mercadolivre.com.br/oferta-acer-nitro5" target="_blank">
+                <img src="Iphone 15ProMax.jpg" alt="iPhone 15 Pro Max" />
+                <h3>iPhone 15 Pro Max</h3>
+                <p>A partir de R$ 8.999,00</p>
+                <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+              </a>
+            </li>
+            <li class="carousel-item">
+              <a href="https://www.mercadolivre.com.br/oferta-acer-nitro5" target="_blank">
+                <img src="Iphone 15ProMax.jpg" alt="iPhone 15 Pro Max" />
+                <h3>iPhone 15 Pro Max</h3>
+                <p>A partir de R$ 8.999,00</p>
+                <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <button class="carousel-btn next">❯</button>
+      </div>
+    </div>
+  </section>
+
+  <main id="categorias-content">
     <section id="celulares" class="categoria-section">
-      <h2>Celulares</h2>
-      <div class="grid">
-        <!-- Cards de celulares -->
-        <div class="card"><img src="iphonevender.jpg" alt="iPhone 15 Pro"><h3>Apple iPhone 15 Pro (256 GB) - Titânio Natural</h3><p>R$ 10.105,00</p><a href="https://mercadolivre.com/sec/1HMpPcz" target="_blank">Comprar</a></div>
-        <div class="card"><img src="Sansung S23 Ultra.jpg" alt="Samsung S23 Ultra"><h3>Samsung Galaxy S23 Ultra 5G</h3><p>R$ 5.506,00</p><a href="https://mercadolivre.com/sec/2dkiwy8" target="_blank">Comprar</a></div>
-        <div class="card"><img src="XiamiPoco.Jpg" alt="Xiaomi Poco C75"><h3>Xiaomi Poco C75 256gb</h3><p>R$ 1.044,90</p><a href="https://mercadolivre.com/sec/18YemsV" target="_blank">Comprar</a></div>
-        <div class="card"><img src="Iphone15.jpg" alt="iPhone 15"><h3>Apple iPhone 15 (128 GB)</h3><p>R$ 4.259,00</p><a href="https://mercadolivre.com/sec/1AFMKxg" target="_blank">Comprar</a></div>
-        <div class="card"><img src="Iphone16.jpg" alt="iPhone 16"><h3>Apple iPhone 16 (128 GB)</h3><p>R$ 4.739,97</p><a href="https://mercadolivre.com/sec/17SFCkf" target="_blank">Comprar</a></div>
-        <div class="card"><img src="Iphone 14.jpg" alt="iPhone 14"><h3>Apple iPhone 14 (128 GB)</h3><p>R$ 3.700,98</p><a href="https://mercadolivre.com/sec/1YgbhRg" target="_blank">Comprar</a></div>
-        <div class="card"><img src="SansungA50.jpg" alt="Samsung A05s"><h3>Samsung Galaxy A05s</h3><p>R$ 693,31</p><a href="https://mercadolivre.com/sec/1Vt9bEo" target="_blank">Comprar</a></div>
-        <div class="card"><img src="A25 Sansung.jpg" alt="Samsung A25"><h3>Samsung Galaxy A25 5G</h3><p>R$ 1.199,00</p><a href="https://mercadolivre.com/sec/2H2gzoH" target="_blank">Comprar</a></div>
+      <div class="container">
+        <h2>Celulares</h2>
+        <div class="grid">
+          <div class="card" id="iphone-15-pro">
+            <img src="iphonevender.jpg" alt="Apple iPhone 15 Pro">
+            <h3>Apple iPhone 15 Pro (256 GB) - Titânio Natural - Distribuidor Autorizado</h3>
+            <p>R$ 10.105,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1HMpPcz" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card" id="samsung-s23-ultra">
+            <div class="carousel-card-images">
+                <img src="Sansung S23 Ultra.jpg" alt="Samsung Galaxy S23 Ultra">
+                <img src="Sansung S23 Ultra traseira.jpg" alt="Samsung Galaxy S23 Ultra - Traseira" class="hidden">
+            </div>
+            <div class="carousel-card-nav">
+                <button class="prev-card-img">❮</button>
+                <button class="next-card-img">❯</button>
+            </div>
+            <h3>Samsung Galaxy S23 Ultra 5G Dual SIM 256 GB Preto 12 GB RAM</h3>
+            <p>R$ 5.506,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/2dkiwy8" target="_blank" class="btn">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="XiamiPoco.Jpg" alt="Xiaomi Poco C75">
+            <h3>Xiaomi Poco C75 256gb 8gb Ram Dual Sim Fone + Relogio Brinde</h3>
+            <p>R$ 1.044,90</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/18YemsV" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="Iphone15.jpg" alt="Apple iPhone 15">
+            <h3>Apple iPhone 15 (128 GB) - Preto - Distribuidor Autorizado</h3>
+            <p>R$ 4.259,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1AFMKxg" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="Iphone16.jpg" alt="Apple iPhone 16">
+            <h3>Apple iPhone 16 (128 GB) - Preto - Distribuidor Autorizado</h3>
+            <p>R$ 4.739,97</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/17SFCkf" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="Iphone 14.jpg" alt="Apple iPhone 14">
+            <h3>Apple iPhone 14 (128 GB) - Estelar - Distribuidor Autorizado</h3>
+            <p>R$ 3.700,98</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1YgbhRg" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="SansungA50.jpg" alt="Samsung Galaxy A05s">
+            <h3>Smartphone Samsung Galaxy A05s 4G 128GB 6GB RAM Câmera Traseira Tripla 50MP + 2MP + 2MP + Selfie 13MP Tela 6.7" Preto</h3>
+            <p>R$ 693,31</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1Vt9bEo" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="A25 Sansung.jpg" alt="Samsung Galaxy A25">
+            <h3>Samsung Galaxy A25 5G Dual SIM 128Gb Azul Escuro 6Gb Ram</h3>
+            <p>R$ 1.199,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/2H2gzoH" class="btn" target="_blank">Comprar</a>
+          </div>
+        </div>
+        <a href="index2.html" class="next-page-btn">Ver mais celulares -></a>
       </div>
     </section>
 
-    <section id="acessorios" class="categoria-section">
-      <h2>Acessórios para Veículos</h2>
-      <div class="grid">
-        <!-- Cards de acessórios -->
-        <div class="card"><img src="kitcameradere.jpg" alt="Câmera de Ré"><h3>Kit Câmera de Ré Automotiva</h3><p>R$ 104,50</p><a href="https://mercadolivre.com/sec/1cMA27C" target="_blank">Comprar</a></div>
-        <div class="card"><img src="revitalizadorpneu.jpg" alt="Revitalizador de Pneu"><h3>Revitalizador Pneu Vonixx</h3><p>R$ 55,20</p><a href="https://mercadolivre.com/sec/1ZwdE4t" target="_blank">Comprar</a></div>
-        <div class="card"><img src="massadepolir.jpg" alt="Massa de Polir"><h3>Massa de Polir Luxcar</h3><p>R$ 26,39</p><a href="https://mercadolivre.com/sec/1NUZHjP" target="_blank">Comprar</a></div>
-        <div class="card"><img src="tirariscos.jpg" alt="Caneta Tira Riscos"><h3>Caneta Tira Riscos Luxcar</h3><p>R$ 21,90</p><a href="https://mercadolivre.com/sec/2zrfPow" target="_blank">Comprar</a></div>
+    <section id="acessorios-Veiculos" class="categoria-section">
+      <div class="container">
+        <h2>Acessórios para Veículos</h2>
+        <div class="grid">
+          <div class="card" id="camera-de-re">
+            <img src="kitcameradere.jpg" alt="Kit Camera De Re Automotiva">
+            <h3>Kit Camera De Re Automotiva Marca Rhead4.3 Inch Lcd Tela Retrovisor SPOWAY</h3>
+            <p>R$ 104,50</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1cMA27C" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="revitalizadorpneu.jpg" alt="Shiny Revitalizador Pneu">
+            <h3>Shiny Revitalizador Pneu Pretinho Longa Duração - Vonixx Cor Vermelho</h3>
+            <p>R$ 55,20</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1ZwdE4t" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="massadepolir.jpg" alt="Massa De Polir Luxcar">
+            <h3>Massa De Polir Luxcar Tira Riscos Recupera Pintura Queimada</h3>
+            <p>R$ 26,39</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1NUZHjP" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="tirariscos.jpg" alt="Caneta Retok Tira Riscos Automotivos">
+            <h3>Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Preto</h3>
+            <p>R$ 21,90</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/2zrfPow" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="tirariscosprata.jpg" alt="Caneta Retok Tira Riscos Automotivos Prata">
+            <h3>Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Prateado</h3>
+            <p>R$ 21,90</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/12GvDg7" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="carregadorcarro.jpg" alt="Carregador de Bateria Automotivo">
+            <h3>Carregador de Bateria 12V Automotivo e Moto 300Ah - Inteligente, Portátil e Carga Lenta 2A</h3>
+            <p>R$ 59,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/2CWnPdm" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="aditivo.jpg" alt="Líquido refrigerante/anticongelante Paraflu">
+            <h3>Líquido refrigerante/anticongelante Paraflu 10-3004 ADITIVO</h3>
+            <p>R$ 20,99</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/14C5Gcm" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="canetavermelhatirarisco.jpg" alt="Caneta Tira Riscos Luxcar Vermelha">
+            <h3>Caneta Tira Riscos Luxcar Para Carros Pneus Rodas Móveis Cor Vermelho</h3>
+            <p>R$ 8,80</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1ZkneuL" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="ferramentas.jpg" alt="Jogo De Soquete Aço Crv">
+            <h3>Jogo De Soquete Aço Crv 1/4 Catraca Chave Allen C/ Maleta</h3>
+            <p>R$ 36,99</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1Qiq4J7" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="capadechuvamoto.jpg" alt="Capa De Chuva Moto Pioneira">
+            <h3>Capa De Chuva Moto Pioneira Impermeável Pvc Motoqueiro Frio</h3>
+            <p>R$ 93,89</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1xHa7xo" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="modulo.jpg" alt="Modulo Taramps Ts400x4">
+            <h3>Modulo Taramps Ts400x4 Amplificador 400w Digital 400rms 4 Canais T400 Ts 400 2 Ohms Som Estereo Entrada Rca Potencia para Carro Moto Caminhonete</h3>
+            <p>R$ 180,99</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1Ft98Ki" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="segurancatravavolnate.jpg" alt="Trava Anti Furto Segurança">
+            <h3>Trava Anti Furto Segurança Aço Volante Direção Pedal Veículo</h3>
+            <p>R$ 64,21</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1huNNnk" class="btn" target="_blank">Comprar</a>
+          </div>
+        </div>
+        <a href="index3acessorios.html" class="next-page-btn">Ver mais acessórios -></a>
       </div>
     </section>
 
     <section id="lar" class="categoria-section">
-      <h2>Lar</h2>
-      <div class="grid">
-        <div class="card"><img src="https://http2.mlstatic.com/D_NQ_NP_2X_65432-MLB0000000000.jpg" alt="Aspirador de Pó"><h3>Aspirador de Pó Turbo</h3><p>R$ 299,99</p><a href="#" target="_blank">Comprar</a></div>
+      <div class="container">
+        <h2>Lar</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_2X_65432-MLB0000000000.jpg" alt="Aspirador de Pó Turbo">
+            <h3>Aspirador de Pó Turbo</h3>
+            <p>R$ 299,99</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://www.mercadolivre.com.br/MLB-LAR-AFILIADO" class="btn" target="_blank">Comprar</a>
+          </div>
+        </div>
+        <a href="index6lar.html" class="next-page-btn">Ver mais para o lar -></a>
       </div>
     </section>
 
     <section id="informatica" class="categoria-section">
-      <h2>Informática</h2>
-      <div class="grid">
-        <div class="card"><img src="Computadori74gth.jpg" alt="PC i7"><h3>Computador i7 Completo</h3><p>R$ 1.197,00</p><a href="https://mercadolivre.com/sec/2MhsKVh" target="_blank">Comprar</a></div>
+      <div class="container">
+        <h2>Informática</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="Computadori74gth.jpg" alt="Computador Completo Intel Core i7">
+            <h3>Computador Completo Intel Core i7, 16GB RAM, SSD 512GB, Bivolt, Monitor 20" LED, BluePC Top, CD2E-0117TO</h3>
+            <p>R$ 1.197,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/2MhsKVh" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="computadori54gth.jpg" alt="Computador Completo Intel Core I5">
+            <h3>Computador Completo Fácil Office Intel Core I5 4570 4ª Geração 16gb Ram 240gb Ssd Monitor 20 75hz Hdmi Windows 10 Pro Trial Cdf-099of</h3>
+            <p>R$ 919,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/11ZAJQM" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="computadori54gth2.jpg" alt="Computador Completo 2Eletro Top Intel Core i5">
+            <h3>Computador Completo 2Eletro Top Intel Core i5, 16GB RAM, SSD 512GB, Bivolt, Monitor 20" LED - CD2E-0114TO</h3>
+            <p>R$ 1.055,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1FU8We3" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="computadori33gth.jpg" alt="Computador Completo I5 3º G">
+            <h3>Computador Completo I5 3º G 8gb Hd Ssd 240gb Monitor Hdmi</h3>
+            <p>R$ 869,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/2iQKHrU" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="pcgamer.jpg" alt="Pc Gamer Completo 2eletro Go">
+            <h3>Pc Gamer Completo 2eletro Go I7 16gb 1tb Geforce Gtx 4gb</h3>
+            <p>R$ 2.867,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1XgzprY" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="acergamer.jpg" alt="Notebook Gamer Acer Nitro V15">
+            <h3>Notebook Gamer Acer Nitro V15 - 15.6 144hz Ips, Intel Core I7 13620h (13ª Geração) 4.90ghz, Nvidia Geforce Rtx 3050 6gb Gddr6, 8gb Ram Ddr5, 512gb Ssd Pcie 4.0 Nvme, Áudio Dts, Preto - Anv15-51-7837</h3>
+            <p>R$ 4.987,40</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/21sqvxr" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="notebookacernormal.jpg" alt="Notebook Acer Aspire 5">
+            <h3>Notebook Acer Aspire 5 Intel Core I5 - 12450H 8GB RAM 256GB SSD Windows 11 Home Tela 15,6" Full HD A515-57-55B8 Bivolt</h3>
+            <p>R$ 2.959,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1Nbx1Um" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="monitor.jpg" alt="Monitor Gamer Aoc 21.5'' Full Hd">
+            <h3>Monitor Gamer Aoc 21.5'' Full Hd Gaming 120hz 1ms 22b30hm23 Cor Preto</h3>
+            <p>R$ 491,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/1b5ECQi" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="monitor2.jpg" alt="Monitor Gamer 27 27g4/p">
+            <h3>Monitor Gamer 27 27g4/p 180hz tempo de resposta 0,5ms Ips Preto Aoc</h3>
+            <p>R$ 899,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/124V2oK" class="btn" target="_blank">Comprar</a>
+          </div>
+          <div class="card">
+            <img src="kitmouseteclado.jpg" alt="Monitor Led 17.1 Polegadas + Kit Teclado E Mouse Sem Fio">
+            <h3>Monitor Led 17.1 Polegadas + Kit Teclado E Mouse Sem Fio Cor Preto</h3>
+            <p>R$ 362,78</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/2vdpVG7" class="btn" target="_blank">Comprar</a>
+          </div>
+        </div>
+        <a href="index4informatica.html" class="next-page-btn">Ver mais de informática -></a>
       </div>
     </section>
 
     <section id="televisores" class="categoria-section">
-      <h2>Televisores</h2>
-      <div class="grid">
-        <div class="card"><img src="https://http2.mlstatic.com/D_NQ_NP_2X_98765-MLB0000000000.jpg" alt="Smart TV 50"><h3>Smart TV 50” 4K</h3><p>R$ 2.199,00</p><a href="https://mercadolivre.com/sec/2L38RjD" target="_blank">Comprar</a></div>
+      <div class="container">
+        <h2>Televisores</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_2X_98765-MLB0000000000.jpg" alt="Smart TV 50” 4K">
+            <h3>Smart TV 50” 4K</h3>
+            <p>R$ 2.199,00</p>
+            <span class="price-disclaimer">Preço sujeito a alterações no Mercado Livre</span>
+            <a href="https://mercadolivre.com/sec/2L38RjD" class="btn" target="_blank">Comprar</a>
+          </div>
+        </div>
+        <a href="index5televisores.html" class="next-page-btn">Ver mais televisores -></a>
       </div>
     </section>
   </main>
 
-  <section id="sobre" class="sobre"><h2>Sobre a Loja</h2><p>Somos uma loja afiliada que traz as melhores ofertas do Mercado Livre para você, com curadoria e qualidade garantida.</p></section>
-  <section id="contato" class="contato"><h2>Fale Conosco</h2><p>Email: contato@promolivre.com</p></section>
-  <footer><p>&copy; 2025 PromoLivre. Todos os direitos reservados.</p></footer>
+  <section id="sobre" class="sobre">
+    <div class="container">
+      <h2>Sobre a Loja</h2>
+      <p>Somos uma loja afiliada que busca sempre oferecer os melhores produtos e promoções do Mercado Livre com curadoria personalizada para você.</p>
+    </div>
+  </section>
+
+  <section id="contato" class="contato">
+    <div class="container">
+      <h2>Fale Conosco</h2>
+      <p>Email: contato@promolivre.com</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 - PromoLivre. Todos os direitos reservados.</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
