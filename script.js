@@ -1,71 +1,184 @@
+
+// Dados de produtos para a busca (adicione todos os produtos aqui)
 const produtosData = [
-    // Exemplo para Celulares
-    { nome: "Apple iPhone 15 Pro (256 GB)", id: "iphone-15-pro", categoria: "celulares", subcategoria: "Apple" },
-    { nome: "Samsung Galaxy S23 Ultra 5G Dual SIM 256 GB Preto", id: "samsung-s23-ultra", categoria: "celulares", subcategoria: "Samsung" },
-    { nome: "Xiaomi Poco C75 256gb 8gb Ram Dual Sim Fone + Relogio Brinde", id: "xiaomi-poco-c75", categoria: "celulares", subcategoria: "Xiaomi" },
-    { nome: "Apple iPhone 15 (128 GB) - Preto", id: "iphone-15", categoria: "celulares", subcategoria: "Apple" },
-    { nome: "Apple iPhone 16 (128 GB) - Preto", id: "iphone-16", categoria: "celulares", subcategoria: "Apple" },
-    { nome: "Apple iPhone 14 (128 GB) - Estelar", id: "iphone-14", categoria: "celulares", subcategoria: "Apple" },
-    { nome: "Smartphone Samsung Galaxy A05s", id: "samsung-a05s", categoria: "celulares", subcategoria: "Samsung" },
-    { nome: "Samsung Galaxy A25 5G Dual SIM 128Gb Azul Escuro", id: "samsung-a25", categoria: "celulares", subcategoria: "Samsung" },
-
-    // Exemplo para Acessórios Veículos
-    { nome: "Kit Camera De Re Automotiva Marca Rhead4.3 Inch Lcd Tela Retrovisor SPOWAY", id: "camera-de-re", categoria: "acessorios-Veiculos", subcategoria: "Eletrônicos" },
-    { nome: "Shiny Revitalizador Pneu Pretinho Longa Duração - Vonixx Cor Vermelho", id: "revitalizador-pneu", categoria: "acessorios-Veiculos", subcategoria: "Manutenção" },
-    { nome: "Massa De Polir Luxcar Tira Riscos Recupera Pintura Queimada", id: "massa-polir", categoria: "acessorios-Veiculos", subcategoria: "Manutenção" },
-    { nome: "Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Preto", id: "caneta-retok-preto", categoria: "acessorios-Veiculos", subcategoria: "Manutenção" },
-    { nome: "Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Prateado", id: "caneta-retok-prata", categoria: "acessorios-Veiculos", subcategoria: "Manutenção" },
-    { nome: "Carregador de Bateria 12V Automotivo e Moto 300Ah", id: "carregador-automotivo", categoria: "acessorios-Veiculos", subcategoria: "Eletrônicos" },
-    { nome: "Líquido refrigerante/anticongelante Paraflu 10-3004 ADITIVO", id: "aditivo-paraflu", categoria: "acessorios-Veiculos", subcategoria: "Manutenção" },
-    { nome: "Caneta Tira Riscos Luxcar Para Carros Pneus Rodas Móveis Cor Vermelho", id: "caneta-retok-vermelho", categoria: "acessorios-Veiculos", subcategoria: "Manutenção" },
-    { nome: "Jogo De Soquete Aço Crv 1/4 Catraca Chave Allen C/ Maleta", id: "jogo-soquete", categoria: "acessorios-Veiculos", subcategoria: "Ferramentas" },
-    { nome: "Capa De Chuva Moto Pioneira Impermeável Pvc Motoqueiro Frio", id: "capa-chuva-moto", categoria: "acessorios-Veiculos", subcategoria: "Motos" },
-    { nome: "Modulo Taramps Ts400x4 Amplificador 400w Digital", id: "modulo-taramps", categoria: "acessorios-Veiculos", subcategoria: "Som Automotivo" },
-    { nome: "Trava Anti Furto Segurança Aço Volante Direção Pedal Veículo", id: "trava-volante", categoria: "acessorios-Veiculos", subcategoria: "Segurança" },
-
-    // Exemplo para Lar
-    { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
-    // Adicione mais produtos de lar com suas subcategorias
-
-    // Exemplo para Informática
-    { nome: "Computador Completo Intel Core i7", id: "computador-i7", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Computador Completo Fácil Office Intel Core I5", id: "computador-i5-office", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Computador Completo 2Eletro Top Intel Core i5", id: "computador-i5-2eletro", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Computador Completo I5 3º G 8gb Hd Ssd", id: "computador-i5-3g", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Pc Gamer Completo 2eletro Go I7", id: "pc-gamer", categoria: "informatica", subcategoria: "Notebooks e PCs Gamer" },
-    { nome: "Notebook Gamer Acer Nitro V15", id: "acer-nitro-v15", categoria: "informatica", subcategoria: "Notebooks e PCs Gamer" },
-    { nome: "Notebook Acer Aspire 5 Intel Core I5", id: "acer-aspire-5", categoria: "informatica", subcategoria: "Notebooks" },
-    { nome: "Monitor Gamer Aoc 21.5'' Full Hd Gaming 120hz", id: "monitor-aoc-21", categoria: "informatica", subcategoria: "Monitores" },
-    { nome: "Monitor Gamer 27 27g4/p 180hz", id: "monitor-aoc-27", categoria: "informatica", subcategoria: "Monitores" },
-    { nome: "Kit Monitor Led 17.1 Polegadas + Teclado E Mouse Sem Fio", id: "kit-monitor-teclado", categoria: "informatica", subcategoria: "Periféricos" },
-
-    // Exemplo para Televisores
-    { nome: "Smart TV 50” 4K", id: "smart-tv-50", categoria: "televisores", subcategoria: "Smart TVs" },
-    // Adicione mais produtos de televisores com suas subcategorias
+    { nome: "Apple iPhone 15 Pro", id: "iphone-15-pro" },
+    { nome: "Samsung Galaxy S23 Ultra", id: "samsung-s23-ultra" },
+    { nome: "Xiaomi Poco C75", id: "xiaomi-poco-c75" }, // Exemplo de ID para este produto
+    { nome: "Apple iPhone 15", id: "iphone-15" },
+    { nome: "Apple iPhone 16", id: "iphone-16" },
+    { nome: "Apple iPhone 14", id: "iphone-14" },
+    { nome: "Smartphone Samsung Galaxy A05s", id: "samsung-a05s" },
+    { nome: "Samsung Galaxy A25 5G", id: "samsung-a25" },
+    { nome: "Kit Camera De Re Automotiva", id: "camera-de-re" },
+    { nome: "Shiny Revitalizador Pneu Pretinho Longa Duração", id: "revitalizador-pneu" },
+    { nome: "Massa De Polir Luxcar Tira Riscos", id: "massa-polir" },
+    { nome: "Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Preto", id: "caneta-retok-preto" },
+    { nome: "Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Prateado", id: "caneta-retok-prata" },
+    { nome: "Carregador de Bateria 12V Automotivo e Moto 300Ah", id: "carregador-automotivo" },
+    { nome: "Líquido refrigerante/anticongelante Paraflu 10-3004 ADITIVO", id: "aditivo-paraflu" },
+    { nome: "Caneta Tira Riscos Luxcar Para Carros Pneus Rodas Móveis Cor Vermelho", id: "caneta-retok-vermelho" },
+    { nome: "Jogo De Soquete Aço Crv 1/4 Catraca Chave Allen C/ Maleta", id: "jogo-soquete" },
+    { nome: "Capa De Chuva Moto Pioneira Impermeável Pvc Motoqueiro Frio", id: "capa-chuva-moto" },
+    { nome: "Modulo Taramps Ts400x4 Amplificador 400w Digital", id: "modulo-taramps" },
+    { nome: "Trava Anti Furto Segurança Aço Volante Direção Pedal Veículo", id: "trava-volante" },
+    { nome: "Aspirador de Pó Turbo", id: "aspirador-po" },
+    { nome: "Computador Completo Intel Core i7", id: "computador-i7" },
+    { nome: "Computador Completo Fácil Office Intel Core I5", id: "computador-i5-office" },
+    { nome: "Computador Completo 2Eletro Top Intel Core i5", id: "computador-i5-2eletro" },
+    { nome: "Computador Completo I5 3º G 8gb Hd Ssd", id: "computador-i5-3g" },
+    { nome: "Pc Gamer Completo 2eletro Go I7", id: "pc-gamer" },
+    { nome: "Notebook Gamer Acer Nitro V15", id: "acer-nitro-v15" },
+    { nome: "Notebook Acer Aspire 5 Intel Core I5", id: "acer-aspire-5" },
+    { nome: "Monitor Gamer Aoc 21.5'' Full Hd Gaming 120hz", id: "monitor-aoc-21" },
+    { nome: "Monitor Gamer 27 27g4/p 180hz", id: "monitor-aoc-27" },
+    { nome: "Monitor Led 17.1 Polegadas + Kit Teclado E Mouse Sem Fio", id: "kit-monitor-teclado" },
+    { nome: "Smart TV 50” 4K", id: "smart-tv-50" },
+    // Adicione todos os produtos do seu HTML aqui com seus IDs
 ];
 
-// ... (restante do seu script.js) ...
+function buscarProduto() {
+    const termo = document.getElementById("campoPesquisa").value.toLowerCase();
+    const resultadosDiv = document.getElementById("resultados");
+    resultadosDiv.innerHTML = ""; // Limpa resultados anteriores
 
-// **IMPORTANTE: Atualize esta parte no seu script.js**
+    if (termo.trim() === "") {
+        resultadosDiv.style.display = "none";
+        return;
+    }
+
+    const encontrados = produtosData.filter(p => p.nome.toLowerCase().includes(termo));
+
+    if (encontrados.length === 0) {
+        resultadosDiv.innerHTML = "<p>Nenhum produto encontrado.</p>";
+    } else {
+        encontrados.forEach(produto => {
+            const item = document.createElement("div");
+            item.classList.add("resultado-item");
+            item.textContent = produto.nome;
+            item.onclick = () => {
+                const destino = document.getElementById(produto.id);
+                if (destino) {
+                    // Oculta a div de resultados
+                    resultadosDiv.style.display = "none";
+                    // Rola até a categoria do produto, se estiver oculta
+                    const categoriaSec = destino.closest('.categoria-section');
+                    if (categoriaSec && categoriaSec.style.display === 'none') {
+                        mostrarCategoria(categoriaSec.id);
+                    }
+                    // Rola até o produto
+                    destino.scrollIntoView({ behavior: "smooth", block: "center" });
+                    // Opcional: Adicionar um destaque temporário ao card encontrado
+                    destino.style.outline = '2px solid #3483fa';
+                    setTimeout(() => {
+                        destino.style.outline = 'none';
+                    }, 3000);
+                }
+            };
+            resultadosDiv.appendChild(item);
+        });
+    }
+
+    resultadosDiv.style.display = "block";
+}
+
+// Fechar resultados da busca ao clicar fora
+document.addEventListener('click', (event) => {
+    const resultadosDiv = document.getElementById("resultados");
+    const campoPesquisa = document.getElementById("campoPesquisa");
+    if (!resultadosDiv.contains(event.target) && !campoPesquisa.contains(event.target)) {
+        resultadosDiv.style.display = "none";
+    }
+});
+
+
+// Funções do Carrossel de Destaque
+const track = document.querySelector('.carousel-track');
+const prevButton = document.querySelector('.carousel-btn.prev');
+const nextButton = document.querySelector('.carousel-btn.next');
+let autoScrollInterval;
+
+function getVisibleCount() {
+    if (window.innerWidth <= 768) return 1; // 1 item em mobile
+    if (window.innerWidth <= 1024) return 2; // 2 itens em tablet
+    return 3; // 3 itens em desktop
+}
+
+function updateCarousel(direction = 0) {
+    const items = Array.from(track.children);
+    const visibleCount = getVisibleCount();
+    const totalItems = items.length;
+
+    // Atualiza o índice baseado na direção
+    if (direction === 1) { // Next
+        if (currentIndex < totalItems - visibleCount) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Volta para o início se chegar ao fim
+        }
+    } else if (direction === -1) { // Prev
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = totalItems - visibleCount; // Vai para o fim se chegar ao início
+        }
+    }
+
+    const itemWidth = items[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+
+    // Reinicia o auto-scroll
+    resetAutoScroll();
+}
+
+function resetAutoScroll() {
+    clearInterval(autoScrollInterval);
+    autoScrollInterval = setInterval(() => updateCarousel(1), 4000); // Rola a cada 4 segundos
+}
+
+// Event Listeners para botões do carrossel
+if (nextButton) {
+    nextButton.addEventListener('click', () => updateCarousel(1));
+}
+if (prevButton) {
+    prevButton.addEventListener('click', () => updateCarousel(-1));
+}
+
+// Inicializa o carrossel na carga da página e redimensionamento
+window.addEventListener('load', () => {
+    currentIndex = 0; // Garante que começa no primeiro item
+    updateCarousel();
+    resetAutoScroll(); // Inicia o auto-scroll
+});
+window.addEventListener('resize', () => {
+    currentIndex = 0; // Reseta para o início ao redimensionar
+    updateCarousel();
+    resetAutoScroll(); // Reinicia o auto-scroll no redimensionamento
+});
+
+
+// Função para mostrar/ocultar menu hamburguer (mobile)
+function toggleMenu() {
+    const menu = document.getElementById("menuCategorias");
+    menu.classList.toggle("show");
+}
+
+// Funções para mostrar subcategorias e categorias
 const categoriasData = {
     celulares: {
         titulo: "Tecnologia > Celulares",
-        // Subcategorias dinâmicas baseadas nos produtos disponíveis
-        // Para "Pneus" e "Acessórios" você precisará ter produtos com essas subcategorias
-        // Caso não tenha produtos específicos de "Pneus", podemos colocar "Manutenção" ou "Outros Acessórios"
-        itens: ["Apple", "Samsung", "Motorola", "Xiaomi"] // Exemplo de subcategorias
+        itens: ["Samsung", "Apple", "Motorola", "Xiaomi"]
     },
-    "acessorios-Veiculos": {
+    "acessorios-Veiculos": { // Chave corrigida para corresponder ao ID HTML
         titulo: "Acessórios para Veículos",
-        itens: ["Manutenção", "Eletrônicos", "Ferramentas", "Motos", "Som Automotivo", "Segurança"] // **Ajuste estas subcategorias para refletir seus produtos reais**
+        itens: ["Pneus", "Acessórios"]
     },
     lar: {
         titulo: "Casa e Lar",
-        itens: ["Eletrodomésticos", "Móveis", "Decoração", "Utensílios"]
+        itens: ["Eletrodomésticos", "Móveis", "Decoração"]
     },
     informatica: {
         titulo: "Informática",
-        itens: ["Computadores", "Notebooks", "Notebooks e PCs Gamer", "Periféricos", "Monitores", "Fontes"]
+        itens: ["Computadores", "Notebooks", "Periféricos", "Fontes", "Monitores", "Placa de Vídeo"]
     },
     televisores: {
         titulo: "Televisores",
@@ -73,7 +186,6 @@ const categoriasData = {
     }
 };
 
-// Modifique a função mostrarCategoria para gerar links clicáveis para subcategorias
 function mostrarCategoria(categoriaId) {
     const secoes = document.querySelectorAll('.categoria-section');
     secoes.forEach(secao => secao.style.display = 'none'); // Oculta todas
@@ -89,53 +201,58 @@ function mostrarCategoria(categoriaId) {
 
     if (dados) {
         let html = `<h3>${dados.titulo}</h3><ul>`;
-        dados.itens.forEach(subItem => {
-            // Agora, cada item da subcategoria terá um onclick
-            html += `<li><a href="#" onclick="filtrarPorSubcategoria('${categoriaId}', '${subItem}')">${subItem}</a></li>`;
+        dados.itens.forEach(item => {
+            html += `<li>${item}</li>`;
         });
         html += "</ul>";
         subcategoriasDiv.innerHTML = html;
         subcategoriasDiv.style.display = "block";
     } else {
-        subcategoriasDiv.style.display = "none";
+        subcategoriasDiv.style.display = "none"; // Oculta se não houver subcategorias
     }
 
-    // Por padrão, ao selecionar uma categoria principal, mostre todos os produtos dela
-    filtrarPorSubcategoria(categoriaId, null); // Chama com subcategoria nula para mostrar todos
+    // Fecha o menu hamburguer após selecionar uma categoria no mobile
+    const menu = document.getElementById("menuCategorias");
+    if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+    }
 }
 
-// **NOVA FUNÇÃO: Filtrar produtos por subcategoria**
-function filtrarPorSubcategoria(categoriaId, subcategoriaNome) {
-    const categoriaSection = document.getElementById(categoriaId);
-    if (!categoriaSection) return;
+// Mostrar categoria inicial (Celulares por padrão) ao carregar a página
+window.addEventListener('DOMContentLoaded', () => {
+    mostrarCategoria('celulares');
 
-    const cards = categoriaSection.querySelectorAll('.card');
+    // Inicializa carrosséis de imagens dentro dos cards
+    document.querySelectorAll('.carousel-card-images').forEach(carouselContainer => {
+        const images = carouselContainer.querySelectorAll('img');
+        let currentImageIndex = 0;
 
-    cards.forEach(card => {
-        // Encontra o produto correspondente no produtosData
-        const produtoId = card.id;
-        const produto = produtosData.find(p => p.id === produtoId);
+        const updateCardCarousel = () => {
+            images.forEach((img, index) => {
+                img.classList.toggle('hidden', index !== currentImageIndex);
+            });
+        };
 
-        if (produto) {
-            // Verifica se o produto pertence à subcategoria selecionada
-            // Se subcategoriaNome for null, mostra todos os produtos da categoria principal
-            if (subcategoriaNome === null || produto.subcategoria === subcategoriaNome) {
-                card.style.display = 'block'; // Mostra o card
-            } else {
-                card.style.display = 'none'; // Oculta o card
-            }
-        } else {
-            // Se o card não estiver no produtosData, oculte-o por segurança ou trate o erro
-            card.style.display = 'none';
-            console.warn(`Produto com ID '${produtoId}' não encontrado no produtosData.`);
+        const prevCardBtn = carouselContainer.nextElementSibling.querySelector('.prev-card-img');
+        const nextCardBtn = carouselContainer.nextElementSibling.querySelector('.next-card-img');
+
+        if (prevCardBtn) {
+            prevCardBtn.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : images.length - 1;
+                updateCardCarousel();
+            });
         }
+
+        if (nextCardBtn) {
+            nextCardIndex = (currentImageIndex < images.length - 1) ? currentImageIndex + 1 : 0;
+            updateCardCarousel();
+            nextCardBtn.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex < images.length - 1) ? currentImageIndex + 1 : 0;
+                updateCardCarousel();
+            });
+        }
+
+        updateCardCarousel(); // Mostra a primeira imagem
     });
+});
 
-    // Rola para o início da seção da categoria após o filtro
-    if (categoriaSection) {
-        categoriaSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-}
-
-
-// ... (o restante do seu código, como a função buscarProduto, etc.) ...
