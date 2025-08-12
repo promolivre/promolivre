@@ -25,21 +25,38 @@
     <button class="hamburger" id="hamburger">☰</button>
   </header>
 
-  <section class="carousel-section">
-    <h2>Produtos em Destaque</h2>
-    <div class="carousel-container">
-      <button class="carousel-btn prev">❮</button>
-      <div class="carousel-track-container">
-        <ul class="carousel-track">
-          <li class="carousel-item"><a href="https://mercadolivre.com/sec/11gnVMs" target="_blank"><img src="acerrnitro.jpg" alt="Notebook Acer Nitro V15"><h3>Acer Nitro V15</h3><p>A partir de R$ 5.035,00</p></a></li>
-          <li class="carousel-item"><a href="https://mercadolivre.com/sec/1mfvC8Z" target="_blank"><img src="S25ultra.jpg" alt="Galaxy S25 Ultra"><h3>Galaxy S25 Ultra</h3><p>A partir de R$ 7.199,00</p></a></li>
-          <li class="carousel-item"><a href="https://mercadolivre.com/sec/1HMpPcz" target="_blank"><img src="Iphone 15ProMax.jpg" alt="iPhone 15 Pro Max"><h3>iPhone 15 Pro Max</h3><p>A partir de R$ 8.999,00</p></a></li>
-        </ul>
-      </div>
-      <button class="carousel-btn next">❯</button>
-    </div>
-  </section>
+  <section class="products destaque">
+    <h3 class="section-title">Produtos em Destaque</h3>
 
+    <div class="carousel-container">
+        <button class="prev-btn" aria-label="Produto anterior">&#10094;</button>
+
+        <div class="product-grid">
+            <div class="product">
+                <img src="https://via.placeholder.com/200" alt="Produto 1">
+                <h4>Produto 1</h4>
+                <p>R$ 99,90</p>
+                <a href="#" class="btn">Comprar Agora</a>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200" alt="Produto 2">
+                <h4>Produto 2</h4>
+                <p>R$ 149,90</p>
+                <a href="#" class="btn">Comprar Agora</a>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200" alt="Produto 3">
+                <h4>Produto 3</h4>
+                <p>R$ 79,90</p>
+                <a href="#" class="btn">Comprar Agora</a>
+            </div>
+            <!-- Adicione mais produtos aqui -->
+        </div>
+
+        <button class="next-btn" aria-label="Próximo produto">&#10095;</button>
+    </div>
+</section>
+  
   <main id="categorias">
     <section id="celulares" class="categoria-section">
       <h2>Celulares</h2>
