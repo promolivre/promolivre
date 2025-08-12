@@ -1,48 +1,57 @@
+// script.js - Funcionalidades do PromoLivre
+
 document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.product-grid');
-    const slides = document.querySelectorAll('.product-grid .product');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('menuCategorias');
+  const btnBuscar = document.getElementById('btnBuscar');
+  const campoPesquisa = document.getElementById('campoPesquisa');
+  const track = document.querySelector('.carousel-track');
+  const prevButton = document.querySelector('.carousel-btn.prev');
+  const nextButton = document.querySelector('.carousel-btn.next');
+  const items = Array.from(track.children);
+  let currentIndex = 0;
 
-    let index = 0;
-    let autoSlide;
+  // Menu responsivo
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
 
-    function showSlide(i) {
-        const slideWidth = slides[0].offsetWidth + 16; // 16 = gap
-        track.style.transform = `translateX(${-i * slideWidth}px)`;
-    }
+  // Busca de produtos
+  btnBuscar.addEventListener('click', buscarProduto);
+  campoPesquisa.addEventListener('keypress', e => {
+    if (e.key === 'Enter') buscarProduto();
+  });
 
-    function nextSlide() {
-        index++;
-        if (index >= slides.length) index = 0;
-        showSlide(index);
-    }
+  function buscarProduto() {
+    const termo = campoPesquisa.value.toLowerCase();
+    if (termo.trim() === '') return;
 
-    function prevSlide() {
-        index--;
-        if (index < 0) index = slides.length - 1;
-        showSlide(index);
-    }
-
-    function startAuto() {
-        stopAuto();
-        autoSlide = setInterval(nextSlide, 4000);
-    }
-
-    function stopAuto() {
-        clearInterval(autoSlide);
-    }
-
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-        startAuto();
+    document.querySelectorAll('.card').forEach(card => {
+      const nome = card.querySelector('h3').textContent.toLowerCase();
+      card.style.display = nome.includes(termo) ? '' : 'none';
     });
+  }
 
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-        startAuto();
-    });
+  // Carrossel
+  function updateCarousel() {
+    const itemWidth = items[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${itemWidth * currentIndex}px)`;
+  }
 
-    startAuto();
-    window.addEventListener('resize', () => showSlide(index));
+  nextButton.addEventListener('click', () => {
+    if (currentIndex < items.length - getVisibleCount()) currentIndex++;
+    updateCarousel();
+  });
+
+  prevButton.addEventListener('click', () => {
+    if (currentIndex > 0) currentIndex--;
+    updateCarousel();
+  });
+
+  function getVisibleCount() {
+    return window.innerWidth <= 768 ? 1 : 3;
+  }
+
+  window.addEventListener('resize', updateCarousel);
+  updateCarousel();
 });
