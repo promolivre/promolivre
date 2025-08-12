@@ -1,3 +1,4 @@
+<!-- indexhome.html completo com produtos -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,54 +9,105 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="/">PromoLivre</a>
-      <nav class="main-nav desktop">
-        <a href="#celulares">Celulares</a>
-        <a href="#acessorios">Acessórios</a>
-        <a href="#lar">Lar</a>
-        <a href="#informatica">Informática</a>
-        <a href="#televisores">Televisores</a>
-      </nav>
-      <button id="btn-hamburger" class="hamburger" aria-controls="mobile-nav" aria-expanded="false" aria-label="Abrir menu">
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
-        </span>
-      </button>
+  <header class="top-bar">
+    <div class="logo">PromoLivre</div>
+    <div class="search-box">
+      <input type="text" id="campoPesquisa" placeholder="Buscar produtos...">
+      <button id="btnBuscar">🔍</button>
     </div>
-    <nav id="mobile-nav" class="mobile-nav" aria-hidden="true">
-      <ul>
-        <li><a href="#celulares">Celulares</a></li>
-        <li><a href="#acessorios">Acessórios</a></li>
-        <li><a href="#lar">Lar</a></li>
-        <li><a href="#informatica">Informática</a></li>
-        <li><a href="#televisores">Televisores</a></li>
-      </ul>
+    <nav class="menu-categorias" id="menuCategorias">
+      <a href="#celulares">Celulares</a>
+      <a href="#acessorios">Acessórios</a>
+      <a href="#lar">Lar</a>
+      <a href="#informatica">Informática</a>
+      <a href="#televisores">Televisores</a>
     </nav>
+    <button class="hamburger" id="hamburger">☰</button>
   </header>
 
-  <!-- PRODUTOS EM DESTAQUE -->
   <section class="products destaque">
     <h3 class="section-title">Produtos em Destaque</h3>
-    <div class="carousel-container">
-      <button class="prev-btn" aria-label="Produto anterior">&#10094;</button>
-      <div class="product-grid">
-        <!-- Exemplo de produtos -->
-        <div class="product"><img src="https://via.placeholder.com/200" alt="Produto 1"><h4>Produto 1</h4><p>R$ 99,90</p><a href="#" class="btn">Comprar Agora</a></div>
-        <div class="product"><img src="https://via.placeholder.com/200" alt="Produto 2"><h4>Produto 2</h4><p>R$ 149,90</p><a href="#" class="btn">Comprar Agora</a></div>
-        <div class="product"><img src="https://via.placeholder.com/200" alt="Produto 3"><h4>Produto 3</h4><p>R$ 79,90</p><a href="#" class="btn">Comprar Agora</a></div>
-      </div>
-      <button class="next-btn" aria-label="Próximo produto">&#10095;</button>
-    </div>
-  </section>
 
-  <!-- CATEGORIAS -->
+    <div class="carousel-container">
+        <button class="prev-btn" aria-label="Produto anterior">&#10094;</button>
+
+        <div class="product-grid">
+            <div class="product">
+                <img src="https://via.placeholder.com/200" alt="Produto 1">
+                <h4>Produto 1</h4>
+                <p>R$ 99,90</p>
+                <a href="#" class="btn">Comprar Agora</a>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200" alt="Produto 2">
+                <h4>Produto 2</h4>
+                <p>R$ 149,90</p>
+                <a href="#" class="btn">Comprar Agora</a>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200" alt="Produto 3">
+                <h4>Produto 3</h4>
+                <p>R$ 79,90</p>
+                <a href="#" class="btn">Comprar Agora</a>
+            </div>
+            <!-- Adicione mais produtos aqui -->
+        </div>
+
+        <button class="next-btn" aria-label="Próximo produto">&#10095;</button>
+    </div>
+</section>
+  
   <main id="categorias">
-    <!-- Seções de categorias com produtos -->
+    <section id="celulares" class="categoria-section">
+      <h2>Celulares</h2>
+      <div class="grid">
+        <!-- Cards de celulares -->
+        <div class="card"><img src="iphonevender.jpg" alt="iPhone 15 Pro"><h3>Apple iPhone 15 Pro (256 GB) - Titânio Natural</h3><p>R$ 10.105,00</p><a href="https://mercadolivre.com/sec/1HMpPcz" target="_blank">Comprar</a></div>
+        <div class="card"><img src="Sansung S23 Ultra.jpg" alt="Samsung S23 Ultra"><h3>Samsung Galaxy S23 Ultra 5G</h3><p>R$ 5.506,00</p><a href="https://mercadolivre.com/sec/2dkiwy8" target="_blank">Comprar</a></div>
+        <div class="card"><img src="XiamiPoco.Jpg" alt="Xiaomi Poco C75"><h3>Xiaomi Poco C75 256gb</h3><p>R$ 1.044,90</p><a href="https://mercadolivre.com/sec/18YemsV" target="_blank">Comprar</a></div>
+        <div class="card"><img src="Iphone15.jpg" alt="iPhone 15"><h3>Apple iPhone 15 (128 GB)</h3><p>R$ 4.259,00</p><a href="https://mercadolivre.com/sec/1AFMKxg" target="_blank">Comprar</a></div>
+        <div class="card"><img src="Iphone16.jpg" alt="iPhone 16"><h3>Apple iPhone 16 (128 GB)</h3><p>R$ 4.739,97</p><a href="https://mercadolivre.com/sec/17SFCkf" target="_blank">Comprar</a></div>
+        <div class="card"><img src="Iphone 14.jpg" alt="iPhone 14"><h3>Apple iPhone 14 (128 GB)</h3><p>R$ 3.700,98</p><a href="https://mercadolivre.com/sec/1YgbhRg" target="_blank">Comprar</a></div>
+        <div class="card"><img src="SansungA50.jpg" alt="Samsung A05s"><h3>Samsung Galaxy A05s</h3><p>R$ 693,31</p><a href="https://mercadolivre.com/sec/1Vt9bEo" target="_blank">Comprar</a></div>
+        <div class="card"><img src="A25 Sansung.jpg" alt="Samsung A25"><h3>Samsung Galaxy A25 5G</h3><p>R$ 1.199,00</p><a href="https://mercadolivre.com/sec/2H2gzoH" target="_blank">Comprar</a></div>
+      </div>
+    </section>
+
+    <section id="acessorios" class="categoria-section">
+      <h2>Acessórios para Veículos</h2>
+      <div class="grid">
+        <!-- Cards de acessórios -->
+        <div class="card"><img src="kitcameradere.jpg" alt="Câmera de Ré"><h3>Kit Câmera de Ré Automotiva</h3><p>R$ 104,50</p><a href="https://mercadolivre.com/sec/1cMA27C" target="_blank">Comprar</a></div>
+        <div class="card"><img src="revitalizadorpneu.jpg" alt="Revitalizador de Pneu"><h3>Revitalizador Pneu Vonixx</h3><p>R$ 55,20</p><a href="https://mercadolivre.com/sec/1ZwdE4t" target="_blank">Comprar</a></div>
+        <div class="card"><img src="massadepolir.jpg" alt="Massa de Polir"><h3>Massa de Polir Luxcar</h3><p>R$ 26,39</p><a href="https://mercadolivre.com/sec/1NUZHjP" target="_blank">Comprar</a></div>
+        <div class="card"><img src="tirariscos.jpg" alt="Caneta Tira Riscos"><h3>Caneta Tira Riscos Luxcar</h3><p>R$ 21,90</p><a href="https://mercadolivre.com/sec/2zrfPow" target="_blank">Comprar</a></div>
+      </div>
+    </section>
+
+    <section id="lar" class="categoria-section">
+      <h2>Lar</h2>
+      <div class="grid">
+        <div class="card"><img src="https://http2.mlstatic.com/D_NQ_NP_2X_65432-MLB0000000000.jpg" alt="Aspirador de Pó"><h3>Aspirador de Pó Turbo</h3><p>R$ 299,99</p><a href="#" target="_blank">Comprar</a></div>
+      </div>
+    </section>
+
+    <section id="informatica" class="categoria-section">
+      <h2>Informática</h2>
+      <div class="grid">
+        <div class="card"><img src="Computadori74gth.jpg" alt="PC i7"><h3>Computador i7 Completo</h3><p>R$ 1.197,00</p><a href="https://mercadolivre.com/sec/2MhsKVh" target="_blank">Comprar</a></div>
+      </div>
+    </section>
+
+    <section id="televisores" class="categoria-section">
+      <h2>Televisores</h2>
+      <div class="grid">
+        <div class="card"><img src="https://http2.mlstatic.com/D_NQ_NP_2X_98765-MLB0000000000.jpg" alt="Smart TV 50"><h3>Smart TV 50” 4K</h3><p>R$ 2.199,00</p><a href="https://mercadolivre.com/sec/2L38RjD" target="_blank">Comprar</a></div>
+      </div>
+    </section>
   </main>
 
+  <section id="sobre" class="sobre"><h2>Sobre a Loja</h2><p>Somos uma loja afiliada que traz as melhores ofertas do Mercado Livre para você, com curadoria e qualidade garantida.</p></section>
+  <section id="contato" class="contato"><h2>Fale Conosco</h2><p>Email: contato@promolivre.com</p></section>
   <footer><p>&copy; 2025 PromoLivre. Todos os direitos reservados.</p></footer>
 
   <script src="script.js"></script>
