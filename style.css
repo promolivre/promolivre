@@ -1,4 +1,3 @@
-
 /* style.css - Tema azul moderno para PromoLivre */
 * {
   margin: 0;
@@ -163,4 +162,117 @@ footer {
   padding: 20px;
   margin-top: 40px;
 }
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.product-grid {
+    display: flex;
+    transition: transform 0.4s ease;
+    gap: 16px;
+}
+
+.prev-btn, .next-btn {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+/* HEADER acima de tudo */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: #0b63b8; /* seu azul */
+  z-index: 9999; /* importante: ficar acima do carrossel */
+}
+
+/* HAMBURGUER */
+.hamburger {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+  position: relative;
+}
+
+/* simples animação visual do hambúrguer */
+.hamburger .hamburger-box { display:inline-block; width:22px; height:16px; position:relative; }
+.hamburger .hamburger-inner,
+.hamburger .hamburger-inner::before,
+.hamburger .hamburger-inner::after {
+  content: "";
+  display: block;
+  background: #fff;
+  height: 2px;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.hamburger .hamburger-inner { top: 50%; transform: translateY(-50%); }
+.hamburger .hamburger-inner::before { top: -7px; }
+.hamburger .hamburger-inner::after  { bottom: -7px; }
+
+/* NAV MOBILE (off-canvas) */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 280px;
+  max-width: 85%;
+  background: #0b63b8;
+  color: #fff;
+  padding: 22px;
+  transform: translateX(-110%);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+  z-index: 9998; /* menor que header, maior que resto */
+  box-shadow: 2px 0 12px rgba(0,0,0,0.18);
+  overflow-y: auto;
+}
+.mobile-nav.open { transform: translateX(0); }
+
+/* overlay que bloqueia clique no resto da página */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 9997;
+}
+.nav-overlay.show { display: block; }
+
+/* links dentro do menu */
+.mobile-nav ul { list-style: none; padding: 0; margin: 0; }
+.mobile-nav li + li { margin-top: 10px; }
+.mobile-nav a { color: #fff; text-decoration: none; display:block; padding: 10px 6px; border-radius: 6px; }
+
+/* evita scroll do body quando menu aberto */
+.no-scroll { overflow: hidden; }
+
+/* garante carrossel atrás do header */
+.carousel-container { z-index: 1; position: relative; }
+.prev-btn, .next-btn { z-index: 5; } /* botões do carrossel não devem cobrir o header */
 
