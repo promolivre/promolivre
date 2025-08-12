@@ -1,57 +1,59 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const btn = document.getElementById('btn-hamburger');
+// script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+  // MENU MOBILE
+  const btnHamburger = document.getElementById('btn-hamburger');
   const mobileNav = document.getElementById('mobile-nav');
 
-  if (!btn || !mobileNav) {
-    console.warn('Hamburger ou mobile-nav não encontrados no DOM.');
-    return;
-  }
-
-  // cria overlay se não existir
-  let overlay = document.querySelector('.nav-overlay');
-  if (!overlay) {
-    overlay = document.createElement('div');
-    overlay.className = 'nav-overlay';
-    document.body.appendChild(overlay);
-  }
-
-  function openNav() {
-    mobileNav.classList.add('open');
-    overlay.classList.add('show');
-    btn.setAttribute('aria-expanded', 'true');
-    mobileNav.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('no-scroll');
-  }
-
-  function closeNav() {
-    mobileNav.classList.remove('open');
-    overlay.classList.remove('show');
-    btn.setAttribute('aria-expanded', 'false');
-    mobileNav.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('no-scroll');
-  }
-
-  // toggle no clique do botão
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    if (mobileNav.classList.contains('open')) closeNav();
-    else openNav();
+  btnHamburger.addEventListener('click', () => {
+    const expanded = btnHamburger.getAttribute('aria-expanded') === 'true';
+    btnHamburger.setAttribute('aria-expanded', !expanded);
+    mobileNav.classList.toggle('open');
   });
 
-  // fechar ao clicar no overlay
-  overlay.addEventListener('click', closeNav);
-
-  // fechar ao clicar em um link do menu (comportamento comum)
-  mobileNav.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') closeNav();
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      btnHamburger.setAttribute('aria-expanded', false);
+    });
   });
 
-  // fechar com ESC
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
-  });
+  // CARROSSEL AUTOMÁTICO
+  const track = document.querySelector('.product-grid');
+  const slides = document.querySelectorAll('.product');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
 
-  // segurança: se outro script impedir clique (pointer-events), força foco no botão
-  btn.style.pointerEvents = 'auto';
+  let index = 0;
+  let autoSlide;
+
+  function showSlide(i) {
+    const slideWidth = slides[0].offsetWidth + 15;
+    track.style.transform = `translateX(${-i * slideWidth}px)`;
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+  }
+
+  function startAuto() {
+    stopAuto();
+    autoSlide = setInterval(nextSlide, 4000);
+  }
+
+  function stopAuto() {
+    clearInterval(autoSlide);
+  }
+
+  nextBtn.addEventListener('click', () => { nextSlide(); startAuto(); });
+  prevBtn.addEventListener('click', () => { prevSlide(); startAuto(); });
+
+  startAuto();
+  window.addEventListener('resize', () => showSlide(index));
 });
-
