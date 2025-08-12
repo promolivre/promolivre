@@ -1,59 +1,48 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
-  // MENU MOBILE
-  const btnHamburger = document.getElementById('btn-hamburger');
-  const mobileNav = document.getElementById('mobile-nav');
+    const track = document.querySelector('.product-grid');
+    const slides = document.querySelectorAll('.product-grid .product');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
 
-  btnHamburger.addEventListener('click', () => {
-    const expanded = btnHamburger.getAttribute('aria-expanded') === 'true';
-    btnHamburger.setAttribute('aria-expanded', !expanded);
-    mobileNav.classList.toggle('open');
-  });
+    let index = 0;
+    let autoSlide;
 
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      btnHamburger.setAttribute('aria-expanded', false);
+    function showSlide(i) {
+        const slideWidth = slides[0].offsetWidth + 16; // 16 = gap
+        track.style.transform = `translateX(${-i * slideWidth}px)`;
+    }
+
+    function nextSlide() {
+        index++;
+        if (index >= slides.length) index = 0;
+        showSlide(index);
+    }
+
+    function prevSlide() {
+        index--;
+        if (index < 0) index = slides.length - 1;
+        showSlide(index);
+    }
+
+    function startAuto() {
+        stopAuto();
+        autoSlide = setInterval(nextSlide, 4000);
+    }
+
+    function stopAuto() {
+        clearInterval(autoSlide);
+    }
+
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        startAuto();
     });
-  });
 
-  // CARROSSEL AUTOMÁTICO
-  const track = document.querySelector('.product-grid');
-  const slides = document.querySelectorAll('.product');
-  const prevBtn = document.querySelector('.prev-btn');
-  const nextBtn = document.querySelector('.next-btn');
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        startAuto();
+    });
 
-  let index = 0;
-  let autoSlide;
-
-  function showSlide(i) {
-    const slideWidth = slides[0].offsetWidth + 15;
-    track.style.transform = `translateX(${-i * slideWidth}px)`;
-  }
-
-  function nextSlide() {
-    index = (index + 1) % slides.length;
-    showSlide(index);
-  }
-
-  function prevSlide() {
-    index = (index - 1 + slides.length) % slides.length;
-    showSlide(index);
-  }
-
-  function startAuto() {
-    stopAuto();
-    autoSlide = setInterval(nextSlide, 4000);
-  }
-
-  function stopAuto() {
-    clearInterval(autoSlide);
-  }
-
-  nextBtn.addEventListener('click', () => { nextSlide(); startAuto(); });
-  prevBtn.addEventListener('click', () => { prevSlide(); startAuto(); });
-
-  startAuto();
-  window.addEventListener('resize', () => showSlide(index));
+    startAuto();
+    window.addEventListener('resize', () => showSlide(index));
 });
