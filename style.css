@@ -1,48 +1,166 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.product-grid');
-    const slides = document.querySelectorAll('.product-grid .product');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
 
-    let index = 0;
-    let autoSlide;
+/* style.css - Tema azul moderno para PromoLivre */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+.top-bar {
+  background-color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #007bff;
+}
+.search-box {
+  display: flex;
+  gap: 5px;
+}
+.search-box input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.search-box button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.menu-categorias a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+.menu-categorias a:hover {
+  color: #0056b3;
+}
+.hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 768px) {
+  .menu-categorias {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .menu-categorias.show { display: flex; }
+  .hamburger { display: block; }
+}
+.carousel-section {
+  background: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+.carousel-container {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  list-style: none;
+}
+.carousel-item {
+  min-width: 33.33%;
+  padding: 10px;
+}
+.carousel-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+.categoria-section {
+  padding: 40px 20px;
+  background: #fff;
+  margin-top: 20px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: #fdfdfd;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+.card:hover { transform: scale(1.03); }
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.card h3 {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+.card p {
+  color: #007bff;
+  font-weight: bold;
+}
+.card a {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 15px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.card a:hover { background: #0056b3; }
+footer {
+  background: #222;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
 
-    function showSlide(i) {
-        const slideWidth = slides[0].offsetWidth + 16; // 16 = gap
-        track.style.transform = `translateX(${-i * slideWidth}px)`;
-    }
-
-    function nextSlide() {
-        index++;
-        if (index >= slides.length) index = 0;
-        showSlide(index);
-    }
-
-    function prevSlide() {
-        index--;
-        if (index < 0) index = slides.length - 1;
-        showSlide(index);
-    }
-
-    function startAuto() {
-        stopAuto();
-        autoSlide = setInterval(nextSlide, 4000);
-    }
-
-    function stopAuto() {
-        clearInterval(autoSlide);
-    }
-
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-        startAuto();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-        startAuto();
-    });
-
-    startAuto();
-    window.addEventListener('resize', () => showSlide(index));
-});
