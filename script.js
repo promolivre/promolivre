@@ -1,48 +1,57 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.product-grid');
-    const slides = document.querySelectorAll('.product-grid .product');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('btn-hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
 
-    let index = 0;
-    let autoSlide;
+  if (!btn || !mobileNav) {
+    console.warn('Hamburger ou mobile-nav não encontrados no DOM.');
+    return;
+  }
 
-    function showSlide(i) {
-        const slideWidth = slides[0].offsetWidth + 16; // 16 = gap
-        track.style.transform = `translateX(${-i * slideWidth}px)`;
-    }
+  // cria overlay se não existir
+  let overlay = document.querySelector('.nav-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    document.body.appendChild(overlay);
+  }
 
-    function nextSlide() {
-        index++;
-        if (index >= slides.length) index = 0;
-        showSlide(index);
-    }
+  function openNav() {
+    mobileNav.classList.add('open');
+    overlay.classList.add('show');
+    btn.setAttribute('aria-expanded', 'true');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
+  }
 
-    function prevSlide() {
-        index--;
-        if (index < 0) index = slides.length - 1;
-        showSlide(index);
-    }
+  function closeNav() {
+    mobileNav.classList.remove('open');
+    overlay.classList.remove('show');
+    btn.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
+  }
 
-    function startAuto() {
-        stopAuto();
-        autoSlide = setInterval(nextSlide, 4000);
-    }
+  // toggle no clique do botão
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (mobileNav.classList.contains('open')) closeNav();
+    else openNav();
+  });
 
-    function stopAuto() {
-        clearInterval(autoSlide);
-    }
+  // fechar ao clicar no overlay
+  overlay.addEventListener('click', closeNav);
 
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-        startAuto();
-    });
+  // fechar ao clicar em um link do menu (comportamento comum)
+  mobileNav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') closeNav();
+  });
 
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-        startAuto();
-    });
+  // fechar com ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+  });
 
-    startAuto();
-    window.addEventListener('resize', () => showSlide(index));
+  // segurança: se outro script impedir clique (pointer-events), força foco no botão
+  btn.style.pointerEvents = 'auto';
 });
+
