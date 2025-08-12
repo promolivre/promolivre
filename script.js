@@ -1,4 +1,4 @@
-// script.js - Funcionalidades do PromoLivre
+// script.js - Funcionalidades do PromoLivre com carrossel automático
 
 document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextButton = document.querySelector('.carousel-btn.next');
   const items = Array.from(track.children);
   let currentIndex = 0;
+  let autoScrollInterval;
 
   // Menu responsivo
   hamburger.addEventListener('click', () => {
@@ -38,20 +39,48 @@ document.addEventListener('DOMContentLoaded', () => {
     track.style.transform = `translateX(-${itemWidth * currentIndex}px)`;
   }
 
-  nextButton.addEventListener('click', () => {
-    if (currentIndex < items.length - getVisibleCount()) currentIndex++;
+  function nextSlide() {
+    if (currentIndex < items.length - getVisibleCount()) {
+      currentIndex++;
+    } else {
+      currentIndex = 0;
+    }
     updateCarousel();
+  }
+
+  function prevSlide() {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = items.length - getVisibleCount();
+    }
+    updateCarousel();
+  }
+
+  nextButton.addEventListener('click', () => {
+    nextSlide();
+    resetAutoScroll();
   });
 
   prevButton.addEventListener('click', () => {
-    if (currentIndex > 0) currentIndex--;
-    updateCarousel();
+    prevSlide();
+    resetAutoScroll();
   });
 
   function getVisibleCount() {
     return window.innerWidth <= 768 ? 1 : 3;
   }
 
+  function startAutoScroll() {
+    autoScrollInterval = setInterval(nextSlide, 4000); // troca a cada 4s
+  }
+
+  function resetAutoScroll() {
+    clearInterval(autoScrollInterval);
+    startAutoScroll();
+  }
+
   window.addEventListener('resize', updateCarousel);
   updateCarousel();
+  startAutoScroll();
 });
