@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minha Loja Virtual</title>
+    <title>Minha Loja Virtual - Celulares</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -12,14 +12,28 @@
             scroll-behavior: smooth;
         }
 
-        /* Estilos para o menu de categorias no cabeçalho */
+        /* Estilos para o cabeçalho fixo */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+            background-color: #fff; /* Garante que não seja transparente */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Adiciona um padding ao body para compensar o cabeçalho fixo */
+        body {
+            padding-top: 130px; /* Ajuste este valor se o seu cabeçalho mudar de altura */
+        }
+
         .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
             background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); -- Removido daqui, pois o header pai já tem */
         }
 
         .logo {
@@ -100,13 +114,13 @@
         }
 
         .menu-categorias {
-            position: sticky;
-            top: 0;
+            /* position: sticky; -- Removido, já que o header é fixo */
+            /* top: 0; -- Removido, já que o header é fixo */
             background-color: #fff;
             padding: 10px 0;
-            z-index: 1000;
+            /* z-index: 1000; -- Removido, já que o header pai já tem */
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); -- Removido daqui, pois o header pai já tem */
         }
 
         .menu-categorias .btn {
@@ -314,6 +328,10 @@
                 text-align: left;
                 margin: 5px 0;
             }
+            /* Ajuste o padding do body para mobile se necessário */
+            body {
+                padding-top: 130px; /* Pode ser diferente em mobile dependendo do layout do cabeçalho */
+            }
         }
     </style>
 </head>
@@ -335,11 +353,7 @@
         </div>
         <nav class="menu-categorias" id="menuCategorias">
             <a href="#" class="btn" onclick="mostrarCategoria('celulares')">Celulares</a>
-            <a href="#" class="btn" onclick="mostrarCategoria('acessorios-Veiculos')">Acessórios para Veículos</a>
-            <a href="#" class="btn" onclick="mostrarCategoria('lar')">Casa e Lar</a>
-            <a href="#" class="btn" onclick="mostrarCategoria('informatica')">Informática</a>
-            <a href="#" class="btn" onclick="mostrarCategoria('televisores')">Televisores</a>
-        </nav>
+            </nav>
         <div id="subcategorias" class="subcategorias">
             </div>
     </header>
@@ -465,352 +479,8 @@
                     </div>
             </div>
         </section>
-
-        <section id="acessorios-Veiculos" class="categoria-section" style="display: none;">
-            <div class="container">
-                <h2>Acessórios para Veículos</h2>
-                <div class="grid">
-                    <div class="card" id="camera-de-re">
-                        <div class="carousel-card-images">
-                            <img src="camera-de-re.jpg" alt="Kit Camera De Re Automotiva">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Kit Camera De Re Automotiva Marca Rhead4.3 Inch Lcd Tela Retrovisor SPOWAY</h3>
-                        <p>R$ 150,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="revitalizador-pneu">
-                        <div class="carousel-card-images">
-                            <img src="shiny-revitalizador-pneu.jpg" alt="Shiny Revitalizador Pneu">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Shiny Revitalizador Pneu Pretinho Longa Duração - Vonixx Cor Vermelho</h3>
-                        <p>R$ 35,90</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="massa-polir">
-                        <div class="carousel-card-images">
-                            <img src="massa-de-polir.jpg" alt="Massa De Polir Luxcar">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Massa De Polir Luxcar Tira Riscos Recupera Pintura Queimada</h3>
-                        <p>R$ 25,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="caneta-retok-preto">
-                        <div class="carousel-card-images">
-                            <img src="caneta-retok-preto.jpg" alt="Caneta Retok Preto">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Preto</h3>
-                        <p>R$ 20,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="caneta-retok-prata">
-                        <div class="carousel-card-images">
-                            <img src="caneta-retok-prata.jpg" alt="Caneta Retok Prata">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Caneta Retok Tira Riscos Automotivos Diversas Cores Luxcar Cor Prateado</h3>
-                        <p>R$ 20,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="carregador-automotivo">
-                        <div class="carousel-card-images">
-                            <img src="carregador-automotivo.jpg" alt="Carregador Automotivo">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Carregador de Bateria 12V Automotivo e Moto 300Ah</h3>
-                        <p>R$ 180,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="aditivo-paraflu">
-                        <div class="carousel-card-images">
-                            <img src="aditivo-paraflu.jpg" alt="Aditivo Paraflu">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Líquido refrigerante/anticongelante Paraflu 10-3004 ADITIVO</h3>
-                        <p>R$ 45,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="caneta-retok-vermelho">
-                        <div class="carousel-card-images">
-                            <img src="caneta-retok-vermelho.jpg" alt="Caneta Retok Vermelho">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Caneta Tira Riscos Luxcar Para Carros Pneus Rodas Móveis Cor Vermelho</h3>
-                        <p>R$ 20,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="jogo-soquete">
-                        <div class="carousel-card-images">
-                            <img src="jogo-soquete.jpg" alt="Jogo De Soquete Aço Crv">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Jogo De Soquete Aço Crv 1/4 Catraca Chave Allen C/ Maleta</h3>
-                        <p>R$ 99,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="capa-chuva-moto">
-                        <div class="carousel-card-images">
-                            <img src="capa-chuva-moto.jpg" alt="Capa De Chuva Moto">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Capa De Chuva Moto Pioneira Impermeável Pvc Motoqueiro Frio</h3>
-                        <p>R$ 70,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="modulo-taramps">
-                        <div class="carousel-card-images">
-                            <img src="modulo-taramps.jpg" alt="Modulo Taramps Ts400x4">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Modulo Taramps Ts400x4 Amplificador 400w Digital</h3>
-                        <p>R$ 250,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                     <div class="card" id="trava-volante">
-                        <div class="carousel-card-images">
-                            <img src="trava-volante.jpg" alt="Trava Anti Furto">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Trava Anti Furto Segurança Aço Volante Direção Pedal Veículo</h3>
-                        <p>R$ 85,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    </div>
-            </div>
-        </section>
-
-        <section id="lar" class="categoria-section" style="display: none;">
-            <div class="container">
-                <h2>Casa e Lar</h2>
-                <div class="grid">
-                    <div class="card" id="aspirador-po">
-                        <div class="carousel-card-images">
-                            <img src="aspirador-po.jpg" alt="Aspirador de Pó">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Aspirador de Pó Turbo</h3>
-                        <p>R$ 300,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    </div>
-            </div>
-        </section>
-
-        <section id="informatica" class="categoria-section" style="display: none;">
-            <div class="container">
-                <h2>Informática</h2>
-                <div class="grid">
-                    <div class="card" id="computador-i7">
-                        <div class="carousel-card-images">
-                            <img src="computador-i7.jpg" alt="Computador Intel Core i7">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Computador Completo Intel Core i7</h3>
-                        <p>R$ 2.500,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    <div class="card" id="computador-i5-office">
-                        <div class="carousel-card-images">
-                            <img src="computador-i5-office.jpg" alt="Computador Fácil Office Intel Core I5">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Computador Completo Fácil Office Intel Core I5</h3>
-                        <p>R$ 1.800,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    <div class="card" id="computador-i5-2eletro">
-                        <div class="carousel-card-images">
-                            <img src="computador-i5-2eletro.jpg" alt="Computador 2Eletro Top Intel Core i5">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Computador Completo 2Eletro Top Intel Core i5</h3>
-                        <p>R$ 1.950,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    <div class="card" id="computador-i5-3g">
-                        <div class="carousel-card-images">
-                            <img src="computador-i5-3g.jpg" alt="Computador I5 3º G 8gb Hd Ssd">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Computador Completo I5 3º G 8gb Hd Ssd</h3>
-                        <p>R$ 1.600,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    <div class="card" id="pc-gamer">
-                        <div class="carousel-card-images">
-                            <img src="pc-gamer.jpg" alt="Pc Gamer Completo 2eletro Go I7">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Pc Gamer Completo 2eletro Go I7</h3>
-                        <p>R$ 3.500,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    <div class="card" id="acer-nitro-v15">
-                        <div class="carousel-card-images">
-                            <img src="acer-nitro-v15.jpg" alt="Notebook Gamer Acer Nitro V15">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Notebook Gamer Acer Nitro V15</h3>
-                        <p>R$ 4.800,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    <div class="card" id="acer-aspire-5">
-                        <div class="carousel-card-images">
-                            <img src="acer-aspire-5.jpg" alt="Notebook Acer Aspire 5 Intel Core I5">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Notebook Acer Aspire 5 Intel Core I5</h3>
-                        <p>R$ 3.200,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    <div class="card" id="monitor-aoc-21">
-                        <div class="carousel-card-images">
-                            <img src="monitor-aoc-21.jpg" alt="Monitor Gamer Aoc 21.5''">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Monitor Gamer Aoc 21.5'' Full Hd Gaming 120hz</h3>
-                        <p>R$ 900,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    <div class="card" id="monitor-aoc-27">
-                        <div class="carousel-card-images">
-                            <img src="monitor-aoc-27.jpg" alt="Monitor Gamer 27 27g4/p 180hz">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Monitor Gamer 27 27g4/p 180hz</h3>
-                        <p>R$ 1.500,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    <div class="card" id="kit-monitor-teclado">
-                        <div class="carousel-card-images">
-                            <img src="kit-monitor-teclado.jpg" alt="Kit Monitor Led 17.1 Polegadas + Teclado E Mouse Sem Fio">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Kit Monitor Led 17.1 Polegadas + Teclado E Mouse Sem Fio</h3>
-                        <p>R$ 700,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    </div>
-            </div>
-        </section>
-
-        <section id="televisores" class="categoria-section" style="display: none;">
-            <div class="container">
-                <h2>Televisores</h2>
-                <div class="grid">
-                    <div class="card" id="smart-tv-50">
-                        <div class="carousel-card-images">
-                            <img src="smart-tv-50.jpg" alt="Smart TV 50” 4K">
-                        </div>
-                        <div class="carousel-card-nav">
-                            <button class="prev-card-img">&#10094;</button>
-                            <button class="next-card-img">&#10095;</button>
-                        </div>
-                        <h3>Smart TV 50” 4K</h3>
-                        <p>R$ 2.200,00</p>
-                        <p>Preço sujeito a alterações no Mercado Livre</p>
-                        <a href="#" class="btn" target="_blank">Comprar</a>
-                    </div>
-                    </div>
-            </div>
-        </section>
-
-    </main>
+        
+        </main>
 
     <footer>
         <div class="container">
