@@ -26,7 +26,7 @@ const produtosData = [
     { nome: "Trava Anti Furto Segurança Aço Volante Direção Pedal Veículo", id: "trava-volante", categoria: "acessorios-Veiculos", subcategoria: "Segurança" },
 
     // Exemplo para Lar - COMPLETE COM SEUS DADOS REAIS
-    { nome: "Guarda-roupa Casal 6 Portas 2 Gavetas França", id: "guarda-roupa-6-potas", categoria: "lar", subcategoria: "Móveis" },
+    { nome: "Guarda-roupa Casal 6 Portas 2 Gavetas França", id: "guarda-roupa", categoria: "lar", subcategoria: "Móveis" },
     { nome: "Espelho Do Pinterest Moldura Couro 60x110cm Modelo Flame Cor Da Moldura Caramelo", id: "espelho-quarto", categoria: "lar", subcategoria: "Decoração" },
     { nome: "Sofá Retrátil E Reclinável 2 Lug 1,50m Molas Mirela Suede Cor Cappuccino", id: "sofa-caputino", categoria: "lar", subcategoria: "Móveis" },
     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
