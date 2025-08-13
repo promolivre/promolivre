@@ -43,7 +43,7 @@ const produtosData = [
     { nome: "Computador Completo Fácil Office Intel Core I5", id: "computador-i5-office", categoria: "informatica", subcategoria: "Computadores" },
     { nome: "Computador Completo 2Eletro Top Intel Core i5", id: "computador-i5-2eletro", categoria: "informatica", subcategoria: "Computadores" },
     { nome: "Computador Completo I5 3º G 8gb Hd Ssd", id: "computador-i5-3g", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Pc Gamer Completo 2eletro Go I7", id: "pc-gamer", categoria: "informatica", subcategoria: "Notebooks e PCs Gamer" },
+    { nome: "Pc Gamer Completo 2eletro Go I7", id: "pc-gamer", categoria: "informatica", subcategoria: "Computadores" },
     { nome: "Notebook Gamer Acer Nitro V15", id: "acer-nitro-v15", categoria: "informatica", subcategoria: "Notebooks e PCs Gamer" },
     { nome: "Notebook Acer Aspire 5 Intel Core I5", id: "acer-aspire-5", categoria: "informatica", subcategoria: "Notebooks" },
     { nome: "Monitor Gamer Aoc 21.5'' Full Hd Gaming 120hz", id: "monitor-aoc-21", categoria: "informatica", subcategoria: "Monitores" },
