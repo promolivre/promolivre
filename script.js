@@ -132,9 +132,8 @@ const categoriasData = {
         titulo: "Casa e Lar",
         itens: ["Eletrodomésticos", "Móveis", "Decoração", "Utensílios"]
     },
-    informatica:{
-    // ...
     informatica: {
+   
         titulo: "Informática",
         itens: ["Computadores", "Notebooks", "Notebooks e PCs Gamer", "Periféricos", "Monitores", "Fontes"] 
     },
