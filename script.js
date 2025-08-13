@@ -39,16 +39,16 @@ const produtosData = [
     // Adicione mais produtos de lar com suas subcategorias e IDs
 
     // Exemplo para Informática - COMPLETE COM SEUS DADOS REAIS
-    { nome: "Computador Completo Intel Core i7", id: "computador-i7", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Computador Completo Fácil Office Intel Core I5", id: "computador-i5-office", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Computador Completo 2Eletro Top Intel Core i5", id: "computador-i5-2eletro", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Computador Completo I5 3º G 8gb Hd Ssd", id: "computador-i5-3g", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Pc Gamer Completo 2eletro Go I7", id: "pc-gamer", categoria: "informatica", subcategoria: "Computadores" },
-    { nome: "Notebook Gamer Acer Nitro V15", id: "acer-nitro-v15", categoria: "informatica", subcategoria: "Notebooks e PCs Gamer" },
-    { nome: "Notebook Acer Aspire 5 Intel Core I5", id: "acer-aspire-5", categoria: "informatica", subcategoria: "Notebooks" },
-    { nome: "Monitor Gamer Aoc 21.5'' Full Hd Gaming 120hz", id: "monitor-aoc-21", categoria: "informatica", subcategoria: "Monitores" },
-    { nome: "Monitor Gamer 27 27g4/p 180hz", id: "monitor-aoc-27", categoria: "informatica", subcategoria: "Monitores" },
-    { nome: "Kit Monitor Led 17.1 Polegadas + Teclado E Mouse Sem Fio", id: "kit-monitor-teclado", categoria: "informatica", subcategoria: "Periféricos" },
+{ nome: "Computador Completo Intel Core i7", id: "computador-i7", categoria: "informatica", subcategoria: "Computadores" },
+{ nome: "Computador Completo Fácil Office Intel Core I5", id: "computador-i5-office", categoria: "informatica", subcategoria: "Computadores" },
+{ nome: "Computador Completo 2Eletro Top Intel Core i5", id: "computador-i5-2eletro", categoria: "informatica", subcategoria: "Computadores" },
+{ nome: "Computador Completo I5 3º G 8gb Hd Ssd", id: "computador-i5-3g", categoria: "informatica", subcategoria: "Computadores" },
+{ nome: "Pc Gamer Completo 2eletro Go I7", id: "pc-gamer", categoria: "informatica", subcategoria: "Computadores" },
+{ nome: "Notebook Gamer Acer Nitro V15", id: "acer-nitro-v15", categoria: "informatica", subcategoria: "Notebooks" }, // CORRIGIDO
+{ nome: "Notebook Acer Aspire 5 Intel Core I5", id: "acer-aspire-5", categoria: "informatica", subcategoria: "Notebooks" }, // CORRIGIDO
+{ nome: "Monitor Gamer Aoc 21.5'' Full Hd Gaming 120hz", id: "monitor-aoc-21", categoria: "informatica", subcategoria: "Monitores" },
+{ nome: "Monitor Gamer 27 27g4/p 180hz", id: "monitor-aoc-27", categoria: "informatica", subcategoria: "Monitores" },
+{ nome: "Kit Monitor Led 17.1 Polegadas + Teclado E Mouse Sem Fio", id: "kit-monitor-teclado", categoria: "informatica", subcategoria: "Periféricos" },
 
     // Exemplo para Televisores - COMPLETE COM SEUS DADOS REAIS
     { nome: "Smart TV 50” 4K", id: "smart-tv-50", categoria: "televisores", subcategoria: "Smart TVs" },
@@ -132,9 +132,11 @@ const categoriasData = {
         titulo: "Casa e Lar",
         itens: ["Eletrodomésticos", "Móveis", "Decoração", "Utensílios"]
     },
+    informatica:{
+    // ...
     informatica: {
         titulo: "Informática",
-        itens: ["Computadores", "Notebooks", "Notebooks e PCs Gamer", "Periféricos", "Monitores", "Fontes"]
+        itens: ["Computadores", "Notebooks", "Notebooks e PCs Gamer", "Periféricos", "Monitores", "Fontes"] 
     },
     televisores: {
         titulo: "Televisores",
