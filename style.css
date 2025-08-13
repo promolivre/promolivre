@@ -256,7 +256,7 @@ header .logo {
   padding: 25px; /* Mais padding */
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative; /* Para o disclaimer E a tooltip */
+  position: relative; /* Para o disclaimer */
   overflow: hidden; /* Garante que nada saia das bordas */
   display: flex;
   flex-direction: column;
@@ -298,56 +298,6 @@ header .logo {
   display: block; /* Garante que fique em uma nova linha */
   margin-bottom: 15px;
 }
-
-/* Estilos para o ícone de informação e a descrição (tooltip) */
-.info-icon {
-    font-size: 1.2em; /* Tamanho do ícone */
-    color: #007bff; /* Cor do ícone */
-    cursor: pointer; /* Muda o cursor para indicar que é clicável */
-    position: absolute; /* Posição absoluta dentro do produto-item */
-    top: 10px; /* Ajuste a posição */
-    right: 10px; /* Ajuste a posição */
-    font-weight: bold; /* Deixa a exclamação mais visível */
-    z-index: 5; /* Garante que o ícone esteja acima de outros elementos do card */
-}
-
-.descricao-tooltip {
-    width: 200px; /* Largura da caixa da descrição */
-    background-color: #333; /* Cor de fundo da descrição */
-    color: #fff; /* Cor do texto da descrição */
-    text-align: center;
-    border-radius: 6px;
-    padding: 10px;
-    position: absolute; /* Posição absoluta */
-    z-index: 10; /* Garante que fique acima de outros elementos */
-    bottom: 100%; /* Posição acima do card do produto */
-    left: 50%;
-    margin-left: -100px; /* Centraliza a caixa (metade da largura) */
-    opacity: 0; /* Começa transparente */
-    pointer-events: none; /* Impede interação com o mouse quando invisível */
-    transition: opacity 0.3s, visibility 0.3s; /* Transição suave */
-    visibility: hidden; /* Esconde por padrão */
-}
-
-/* Seta para a tooltip (opcional) */
-.descricao-tooltip::after {
-    content: "";
-    position: absolute;
-    top: 100%; /* Na parte inferior da tooltip */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent;
-}
-
-/* Classe para mostrar a descrição */
-.descricao-tooltip.visible {
-    opacity: 1;
-    pointer-events: auto; /* Permite interação com o mouse quando visível */
-    visibility: visible;
-}
-
 
 /* Carrossel de Destaque */
 .carousel-section {
