@@ -27,6 +27,15 @@ const produtosData = [
 
     // Exemplo para Lar - COMPLETE COM SEUS DADOS REAIS
     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
+     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
+     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
+     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
+     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
+     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
+     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
+     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
+     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
+     { nome: "Aspirador de Pó Turbo", id: "aspirador-po", categoria: "lar", subcategoria: "Eletrodomésticos" },
     // Adicione mais produtos de lar com suas subcategorias e IDs
 
     // Exemplo para Informática - COMPLETE COM SEUS DADOS REAIS
