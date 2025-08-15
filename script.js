@@ -24,6 +24,19 @@ const produtosData = [
     { nome: "Capa De Chuva Moto Pioneira Impermeável Pvc Motoqueiro Frio", id: "capa-chuva-moto", categoria: "acessorios-Veiculos", subcategoria: "Motos" },
     { nome: "Modulo Taramps Ts400x4 Amplificador 400w Digital", id: "modulo-taramps", categoria: "acessorios-Veiculos", subcategoria: "Som Automotivo" },
     { nome: "Trava Anti Furto Segurança Aço Volante Direção Pedal Veículo", id: "trava-volante", categoria: "acessorios-Veiculos", subcategoria: "Segurança" },
+    { nome: "First Option 8850B com USB, bluetooth e leitor de cartão SD", id: "aparelhosom", categoria: "acessorios-Veiculos", subcategoria: "Som Automotivo" },
+    { nome: "Modulo Taramps DS 800X4 800W 2 Ohms RCA 4 Canais Amplificador Automotivo", id: "amplificadorsom", categoria: "acessorios-Veiculos", subcategoria: "Som Automotivo" },
+    { nome: "Central Multimídia Pioneer Dmh-g228bt 6.2 Touchscreen", id: "aparelhopioner", categoria: "acessorios-Veiculos", subcategoria: "Som Automotivo" },
+    { nome: "Kit De Ferramentas Maleta Caixa 128 Pcs Mecanico Titanium Cor Preto", id: "kitferramenta", categoria: "acessorios-Veiculos", subcategoria: "Ferramentas" },
+    { nome: "Macaco Jacaré Hidraulico 2t Jacarézinho Mecânico Bth200 The Black Tools", id: "macacomecanico", categoria: "acessorios-Veiculos", subcategoria: "Ferramentas" },
+    { nome: "Macaco Hidráulico Tipo Garrafa 2 Toneladas BHG200 The Black Tools", id: "macacohidraulico", categoria: "acessorios-Veiculos", subcategoria: "Ferramentas" },
+    { nome: "Par Adesivos Yamaha Emblema Xj6 Moto Resinado Brasão", id: "emblemaxjc", categoria: "acessorios-Veiculos", subcategoria: "Motos" },
+    { nome: "Burrinho De Freio Esportivo Cg Titan125/150/160twister Cb300", id: "burrinhodefreio", categoria: "acessorios-Veiculos", subcategoria: "Motos" },
+    { nome: "Tomada Usb Moto Carregador Celular 12v C/ Acendedor Cigarro", id: "acendedorcigarromoto", categoria: "acessorios-Veiculos", subcategoria: "Motos" },
+    { nome: "Par Adesivos Yamaha Emblema Xj6 Moto Resinado Brasão", id: "emblemaxjc.jpg", categoria: "acessorios-Veiculos", subcategoria: "Motos" },
+    { nome: "Par Adesivos Yamaha Emblema Xj6 Moto Resinado Brasão", id: "emblemaxjc.jpg", categoria: "acessorios-Veiculos", subcategoria: "Motos" },
+    { nome: "Par Adesivos Yamaha Emblema Xj6 Moto Resinado Brasão", id: "emblemaxjc.jpg", categoria: "acessorios-Veiculos", subcategoria: "Motos" },
+
 
     // Exemplo para Lar - COMPLETE COM SEUS DADOS REAIS
     { nome: "Guarda-roupa Casal 6 Portas 2 Gavetas França", id: "guarda-roupa", categoria: "lar", subcategoria: "Móveis" },
